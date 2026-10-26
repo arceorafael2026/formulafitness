@@ -207,3 +207,45 @@ dialog :focus-visible{outline-color:var(--blue)}
  .fcard{min-height:440px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.spin{animation-duration:2.5s}}
+
+/* Personal Training version: image crops only (object-position inside the existing frames; no size or layout changes).
+   Each value keeps the coach AND the client in view in that frame. */
+.hero-img img.crop-hero{object-position:62% 50%}
+.fcard>img.crop-fv{object-position:100% 50%}
+.wring img.crop-wf{object-position:50% 50%}
+.cta-in>img.crop-cta{object-position:36% 40%}
+/* Mobile (below 700px): the hero frame is narrower than 4:5, so the window is moved left to keep the client's head in view. */
+@media(max-width:699px){.hero-img img.crop-hero{object-position:56% 50%}}
+/* Text fit: new headlines are longer than the baseline ones; balance the wrap so no single word is left alone on the last line. */
+.feat h2,.cta-copy h2{text-wrap:balance}
+
+/* ---- v2: hero supporting copy + button ---- */
+.hero-cta{position:relative;z-index:2;text-align:center;max-width:50rem;margin:1.5rem auto 0}
+.hero-cta .hero-sub{margin:0 0 1.25rem;text-wrap:balance;font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.5;color:#d8dbe3}
+.btn-lg{font-size:1.2rem;padding:1.15rem 2.4rem;min-height:56px}
+.hero-cta .hero-note{margin:.9rem 0 0;font-size:.8rem;color:var(--mut)}
+.hero-cta+.stats{margin-top:2.25rem}
+
+/* ---- v2: client review (compact card, no photo) ---- */
+.sec.quote{padding-top:0}
+.review-card{max-width:820px;margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem);background:var(--card);border:1px solid var(--bd);border-radius:24px}
+.review-card::before{content:"\201C";content:"\201C" / "";display:block;font-size:3.5rem;line-height:.7;font-weight:800;color:var(--blue);margin-bottom:.4rem}
+.review-card blockquote{margin:0}
+.review-card blockquote p{margin:0;font-size:clamp(1.15rem,2.4vw,1.6rem);line-height:1.4;font-weight:600;letter-spacing:-.01em;color:#fff}
+.review-card figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1rem;margin-top:1.25rem}
+.review-card cite{font-style:normal;font-weight:700;color:var(--blue)}
+.review-card .ctx{font-size:.8rem;color:var(--mut)}
+
+/* ---- v2: FAQ (native details/summary) ---- */
+.faq-list{max-width:820px;margin:2.5rem auto 0;display:grid;gap:.75rem}
+.faq-list details{border:1px solid #d9dce3;border-radius:18px;background:#fff}
+.faq-list details[open]{border-color:var(--blue)}
+.faq-list summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:56px;padding:1rem 1.25rem;border-radius:18px;cursor:pointer;list-style:none;font-weight:700;font-size:1rem;line-height:1.4}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";content:"+" / "";flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#eceef2;font-size:1.2rem;font-weight:700;line-height:1}
+.faq-list details[open] summary::after{content:"\2212";content:"\2212" / "";background:var(--blue);color:#fff}
+.faq-list details p{margin:0;padding:0 1.25rem 1.25rem;font-size:.95rem;color:#3a3f4b}
+
+/* portrait feature photo: 4:5 matches the original, so nothing is cropped away */
+.fimg-portrait img{aspect-ratio:4/5;object-position:50% 40%;max-height:720px}
+@media(min-width:700px){.fimg-portrait{max-width:520px;justify-self:start;width:100%}}
