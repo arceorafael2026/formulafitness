@@ -1,0 +1,78 @@
+Update our existing Formula Fitness Personal Training landing page. Preserve its current design, black/white/blue branding, animations and responsive layout. Make focused improvements rather than redesigning the whole page.
+
+The page promotes private one-on-one personal training in Los Alamitos. There is no promotional offer. The main CTA must remain “Book a Consultation.”
+
+Make these changes:
+
+1. Improve the hero
+- Keep “Personal Training. Built Around You.”
+- Add this supporting sentence:
+  “One-on-one personal training in Los Alamitos, with a plan built around your goals.”
+- Add a prominent “Book a Consultation” button directly below.
+- Add this microcopy:
+  “We’ll contact you to arrange your consultation.”
+- Keep the headline readable without awkward overlapping or wrapping, especially on mobile.
+- Connect the button to the same existing GHL form-opening action used by the working consultation buttons.
+
+2. Add credible client proof
+- Add a compact testimonial section immediately after the training-benefits section, before “What Your First Visit Looks Like.”
+- Use only verified review text and attribution.
+- This published review excerpt may be used:
+  “I've done both 1-on-1 and small-group sessions, and you really can't go wrong with either of them.”
+  — Christopher C.
+- Add a small context label: “Experience includes one-on-one and small-group training.”
+- Do not pair this review with an unrelated client photo.
+- Do not invent star ratings, results, names, timeframes or testimonials.
+- Some transformation assets have conflicting client labels. Do not use those names or claim their results came from private training without verification.
+- If verified additional testimonials are unavailable, use this single review.
+
+3. Align the images with private training
+- Review the “Your Starting Point” first-visit panel and final blue CTA section.
+- Replace images that suggest group classes with suitable original one-on-one coaching photos from the supplied assets.
+- Preserve original people and body proportions. Do not generate or retouch client transformations.
+- Avoid stretching images or cropping away important coaching context.
+
+4. Clarify the first-visit explanation
+- Keep the existing section layout.
+- Do not promise a free session, full assessment or specific consultation duration unless confirmed.
+- Explain that visitors submit an enquiry, the team contacts them to arrange a consultation, and they discuss goals and suitable training options.
+- Do not imply submitting the form instantly confirms an appointment.
+
+5. Add a short FAQ section above the final blue CTA
+Use these questions and answers:
+
+“Is this one-on-one personal training?”
+“Yes. This page focuses on private coaching, with sessions tailored to your goals and starting point.”
+
+“Can I enquire if I’m a beginner?”
+“Yes. Tell our team about your experience and goals so we can discuss suitable training options.”
+
+“What happens after I submit the form?”
+“Our team will contact you to arrange your consultation and discuss your goals.”
+
+“Where is Formula Fitness?”
+“3971 Ball Rd, Los Alamitos, CA 90720.”
+
+“How do I find out about training options and pricing?”
+“Book a consultation to discuss your goals, available training options and pricing.”
+
+6. Preserve working integrations
+The following have already been tested successfully:
+- Mobile buttons and form usability.
+- GHL enquiry delivery.
+- Thank-you redirect.
+- Google Ads conversion firing once after successful submission.
+- No false conversions from failed submissions, direct thank-you visits or refreshes.
+- Lead source/UTM attribution.
+
+Preserve the existing GHL embed, form identifiers, opening behavior, consent fields, redirect, tracking scripts and attribution handling. Do not replace the form, add duplicate conversion tags or alter working tracking logic.
+
+7. Keep the page focused
+- Retain the coaching explanations and team section.
+- Keep team names, titles and credentials unchanged unless verified corrections are supplied.
+- Use “Book a Consultation” consistently.
+- Do not add other services, discounts, “free” claims, guaranteed outcomes, injury-prevention guarantees or unconfirmed package inclusions.
+- Ensure FAQ controls and consultation buttons are keyboard accessible.
+- Check desktop and mobile spacing, image crops, text contrast and button visibility.
+
+Implement these changes in the existing project and provide a preview plus a short change summary. Do not publish to production, change DNS/custom domains or modify Google Ads.

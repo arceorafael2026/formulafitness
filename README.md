@@ -1,89 +1,41 @@
-# Formula Fitness: Personal Training landing page (separate version)
+# Formula Fitness: Semi-Private Personal Training, Strength & Longevity design (separate version)
 
-Plain HTML, CSS and a little JavaScript. No build step. **Deploy only the `public/` folder.** Preview version: `noindex` is on. Nothing has been published and no DNS was changed.
+Plain HTML, CSS and a little JavaScript. No build step. **Deploy only the `public/` folder** (when approved). Preview version: `noindex` is on. Nothing has been published, no DNS, GitHub or Google Ads change was made.
 
-## Project layout
-```
-public/                 deployable site: index.html, style.css, script.js, robots.txt, images/, fonts/
-source-images/          original coaching photos (masters). NOT deployed
-docs/                   the content brief, image handoff notes, image map, baseline README. NOT deployed
-tools/build-images.py   rebuilds the web derivatives from the masters (needs Pillow)
-screenshots/            desktop, tablet and mobile screenshots from testing. NOT deployed
-CHANGELOG.md            what changed, including every non-text change
-LAUNCH-CHECKLIST.md     items the business must complete before launch
-```
-Briefs, masters and image inventories are outside `public/`.
+This is a **new, separate project** made from the latest Personal Training strength-and-longevity page. The Personal Training project (`formula-fitness-personal-training-strength-longevity`) and the earlier Semi-Private project (`formula-fitness-semi-private`) were not modified.
 
-## What this version is
-The existing page converted to a one-on-one Personal Training page: copy, navigation labels, image sources, alt text and metadata only. Design, section count and order (9 in v2: hero, program, reviews, first visit, features, trainers, workflow, FAQ, CTA), section IDs, grids, staggered headline, carousels, fonts, colours, spacing and mobile behaviour are as in the baseline. Details are in `CHANGELOG.md`.
+## What changed (copy and images only)
+Design, section order, colors, Sora font, spacing, responsive behavior, results-section styling, coach carousel, FAQ accordion, modal and `script.js` are identical to the Personal Training version. Changed: the supplied Semi-Private copy (hero, benefit strip, three cards, both coaching sections, three steps, team heading, five FAQs, closing, footer, title and description), alt text, and the four photos. See `CHANGELOG.md`.
 
-Baseline note: the `website/` folder named in the request did not arrive as a folder. I used the corrected page from the previous delivery (same files) as the baseline. The original baseline README is in `docs/BASELINE-README.md`.
+## Photos
+Four of the supplied genuine small-group coaching photos (1200 px square masters in `source-images/semi-masters/`, not deployed): slam-ball squat (hero), standing knee raise (first coaching section), kettlebell swing (second section), coach with two clients at a barbell (closing). WebP derivatives come from `tools/build-images.py` (no cropping, retouching or upscaling). Because the masters are square, each placement is framed by viewport in `style.css` ("Photo framing"):
+- **Hero:** under 1280 px the photo sits below the text as a rounded card (4:3 on phones, 16:10 on tablets); from 1280 px it sits beside the text with the text kept clear of the photo edge and a short fade, so the coach on the left and the client on the right are both visible.
+- **Kettlebell section:** 4:3 frame, top-aligned, so the foreground client's head, arms and kettlebell stay in frame at every width. Knee-raise section: 4:3, positioned to keep heads and feet in.
+- **Closing:** fills the right-hand area on desktop; above the text on mobile and tablet, positioned so heads are not cut.
+Alt texts describe only what is visible; no group size or "every rep" claim.
 
-## GHL form (unchanged)
-- Seven enquiry controls open the same modal: header button, new hero "Book a Consultation" button, hero trainer "+" (aria-label "Book a Consultation with our trainers"), both feature buttons, closing CTA, footer "Book a Consultation". Each is a normal link to the form URL if JavaScript is unavailable.
-- Form `https://api.formulafitness.co/widget/form/cCHvBgZHH4fkFVQY6907` (ID unchanged). `https://api.formulafitness.co/js/form_embed.js` is loaded once. No fields, validation, redirect, submission or conversion logic was added or changed.
-- The iframe gets its `src` once, on first open; closing the modal only hides it, so typed data is kept. A spinner, a 15-second timeout message with a retry button, and a permanent "Open it in a new tab" link are in the modal. A load event is never reported as proof the form works.
-- **Escape inside the form:** the form is cross-origin, so Escape does not close the modal while keyboard focus is inside it. Users can Shift+Tab to the close button. This cannot be fixed from this page.
-- A deployment or custom domain alone will not fix a blank form; GHL must also allow the domain to frame the form.
+## Results section
+Three different individual BEFORE/AFTER composites from the supplied pack (`client-result-04/05/06.webp`, 1080x1080, shown whole with `object-fit: contain`; masters in `source-images/results-masters/`). They are **not** the three on the Personal Training page. They are presented as Formula Fitness community results: no names, timeframes, numbers or service attribution. Identity, permission and training-format checks are in `LAUNCH-CHECKLIST.md`. The Christopher C. testimonial is not restored.
 
-## v2 changes (round 3)
-Hero sentence, button and microcopy; single verified testimonial after the training section; first-visit copy and photo; five-question FAQ above the closing CTA; closing CTA photo. Details: `CHANGELOG.md`. `script.js`, the modal markup, the form URL and the embed tag are unchanged.
-
-**Merging into the live site:** this project does not contain the live site's tracking, redirect or UTM handling (only GTM placeholders). Do not replace the live page with `public/index.html`. Apply `v2-changes.patch` (diff against the previous build) to the live files, or send me the live files so I can rebase onto them. Copy the new images in `public/images/` and the appended rules in `style.css`.
-
-## Tracking
-`index.html` contains only the two marked GTM placeholders (head and body). **No tracking code or container ID is present, so no analytics or Ads conversion tracking exists in this build.** Paste the real snippets at the marked places.
+## Form and CTAs (unchanged)
+Eight enquiry controls (header, hero, results, both coaching rows, closing card, mobile sticky button, footer link) open the same shared modal for GHL form `cCHvBgZHH4fkFVQY6907`; `form_embed.js` is loaded once; fallback link, loading state and timeout unchanged. Only the two marked GTM placeholders exist; no tracking IDs were invented and no Ads conversion is installed or verified.
 
 ## Preview locally
-```
-python3 -m http.server -d public 8000
-```
-Then open http://localhost:8000 (do not rely on `file://`). The form modal needs internet access.
+`python3 -m http.server -d public 8000`, then http://localhost:8000 (not `file://`).
 
 ## Testing record
+Headless Chromium (Playwright), local server, widths 375, 390, 768, 1024, 1440. The real GHL form was replaced by a stand-in (the host is not reachable from my workspace). **No enquiry was submitted.**
 
-### Performed (headless Chromium via Playwright, local HTTP server, widths 375, 390, 768, 1024, 1440)
-**The real GHL form and `form_embed.js` could not be reached from my workspace (the network blocks that host), so both were replaced by local stand-ins served on the real URLs: a plain page with 8 fields and a do-nothing button, and an empty script. No enquiry was submitted.**
+### Performed: 478 automated checks passed (about 96 per width)
+- All eight enquiry controls open the shared modal from the keyboard; Escape closes it; the form is requested once; one embed tag, one iframe, one form ID.
+- Exact text for hero, strip, benefit cards, both coaching sections, steps, team heading, five FAQs, closing, footer, title and description.
+- Photos: four distinct, loaded, `object-fit: cover`, alt text everywhere; hero stacked below 1280 px and clear of the text at 1280+; kettlebell and knee-raise frames 4:3 with explicit positions; closing photo loads eagerly, fills the right-hand area on desktop and sits above the text on mobile/tablet. Every crop was also reviewed by eye at 375, 390, 768, 1024 and 1440 px.
+- Results: exact heading, introduction, disclaimer and button; three different composites (none from the Personal Training page), loaded at 1080x1080, `object-fit: contain`, rendered square (no stretch or crop); no names, numbers, timeframes or service attribution in text or alt text; three columns from 900 px, stacked below; section height bounded.
+- Mobile sticky button, tap targets, nav/footer anchors, FAQ keyboard use, ten-coach carousel, contrast (body text 4.5:1, large text 3:1), no horizontal overflow, no console errors.
+- Scans found no one-on-one wording, free/discount/guarantee/pain-free/scarcity, price, duration, group-size, lifespan or old-address terms. `script.js` is byte-identical to the Personal Training version; `noindex` present; no canonical tag.
 
-245 automated checks passed (49 per width), plus a separate timeout test. They covered:
-- All six enquiry controls open the shared modal from the keyboard (Enter); the page URL does not change; Escape (focus outside the iframe) closes it; focus returns to the control that opened it; the close button works.
-- The form URL is requested once across all opens; one `form_embed.js` tag; iframe `src` exact; text typed into the stand-in survived close and reopen; the modal body scrolls to the stand-in's last field and button, including full-screen at 375 px.
-- Loading timeout: with a form request that never answers, the status message and "Try loading again" button appeared at 15 s, and retry re-requested the form.
-- Mobile menu (375/390/768) opens and closes; desktop navigation visible at 1024/1440; new nav labels present.
-- Both carousels: initial cards are One-on-One Attention / A Plan for Your Goals / Strength for Everyday Life and Tony / Amber / Jason; complete cards shown: 3 at 1024 and 1440, 2 at 768, 1 at 375/390; Previous disabled at the start; Next disabled at the end with the last card complete; arrow keys scroll. Six cards and ten coaches remain.
-- No horizontal overflow; the four-line headline has no clipping or vertical overlap; hero badges and stats do not overlap each other or leave the viewport (measured).
-- Every referenced local file exists; nothing in `public/` is unreferenced; no console or page errors; no failed requests; every image has alt text and loaded.
-- Page text and HTML scanned for the previous services and claims (InBody, semi-private, recovery service, active aging, youth, 20+, "SPECIALIZED", limited-number wording, guarantee, discount, pain-free, meal plan, "Under 60 seconds", the old address): none found. The only "Nutritionist" is Chris's carried-over job title (flagged in the checklist).
-- New address text and map link, page title, `noindex`, section IDs and count, and GTM placeholders (no IDs) verified.
-- Image crops reviewed by eye in screenshots: hero and first-visit card at all five widths, circle and closing CTA at 1440 and 390 (`screenshots/`). Coach and client stay in view in each. In the hero at 375/390 the coach's hair/back of head is slightly cropped so the client's head can stay in frame.
-
-### v2 re-test (performed): 350 automated checks passed (70 per width, same five widths), stand-in form as before
-Hero text, button and microcopy exact; button inside the viewport and at least 56 px tall; testimonial text, attribution and context label exact, no image; section order; FAQ text exact, Enter opens, Space closes, Tab moves with a visible focus ring, targets at least 44 px; new first-visit and CTA photos in place; all seven controls open the shared modal; form requested once; contrast at least 4.5:1 for new text (hero button uses the 3:1 large-text rule); banned-term scan extended with "free", "assess", "injur"; no overflow, console errors or failed requests. Crops reviewed by eye in `screenshots/`. The timeout test was not re-run (`script.js` unchanged).
-Observation: at 1440x900 the hero button's bottom edge is near the fold; on 375/390 phones it is inside the first screen.
-
-### Not tested
-- The real form, thank-you redirect, Ads conversion and UTM handling were not touched and not tested (they are not in this project).
-
-- **The real GHL form**: rendering, fields, validation, submission, redirect, whether GHL allows framing on the final domain. Escape-inside-iframe was observed only with a cross-origin stand-in.
-- Tracking and Ads conversions (not installed).
-- Safari/iOS, Firefox and real phones (Chromium only); screen readers; real touch-swipe gestures; performance scoring.
-- Pixel comparison with any reference site.
-
-## Suggested optional result placements (NOT implemented)
-Result images were not added. If identity, permission and one-on-one attribution are confirmed later, two existing image areas could take them (keep each BEFORE/AFTER composite whole):
-1. **First feature row image** (`#features`, first `.fimg`, currently the tablet discussion photo, badge "Personalized Coaching").
-2. **Second feature row image** (second `.fimg`, currently the kettlebell photo, badge "Guidance & Progress").
-
-Practical notes for whoever does it:
-- The composites are square (1080 x 1080) and the frames are 3:2. Use `object-fit: contain` (never `cover`), accepting side bars, or swap to a square frame; do not crop a panel.
-- Candidates that are complete, clearly studio-backed and high-resolution: `client-result-16`, `client-result-17`, `client-result-18`, `client-result-27`, `client-result-29`. Less suitable: 19 (non-studio swimwear selfie), 28 (non-studio "before"), 25 (visible medical brace and mask, health-related), 24 (heart-rate gear, no clear one-on-one link). The three 416 x 300 files are too small for these frames.
-- The badge text ("Personalized Coaching", "Guidance & Progress") would need approved wording; do not add names, weights, timeframes or quotes. Source names for files 15-23 conflict (see `docs/IMAGE-HANDOFF-READ-ME-FIRST.txt`), and the "Chase" timeline is unverified.
-- Alt text should only say what is visible, for example "Before and after comparison photos of a Formula Fitness client".
-- The result images were not copied into this ZIP; use your originals.
-
-## Image notes
-- Derivatives are in `public/images/` as `pt-coach-*-640/960/1280/1600/1920.webp` (long edge capped at 1920, none upscaled, orientation honoured, metadata stripped). The supplied coaching files were already about 2576 px on the long edge. Masters: `source-images/coaching-masters/`.
-- To change a crop, edit the `object-position` rules at the end of `style.css`.
-
-## Publish on Cloudflare Pages (when ready)
-Build command: none. Build output directory: `public`. Complete `LAUNCH-CHECKLIST.md` first.
+### Not tested / unverified
+- The real GHL form (fields, validation, submission, redirect, Ads conversion, UTM, framing on the final domain).
+- Safari/iOS, Firefox, real phones and on-screen keyboard, screen readers, real touch swiping, performance scoring.
+- Whether current coaches deliver semi-private sessions (titles are carried over unchanged).
+- Identity, permission and training format of the three people in the results composites (not verifiable from the files).
