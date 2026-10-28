@@ -1,96 +1,54 @@
-# Formula Fitness landing page (rebuilt from the join.formulafitness.co reference)
+# Formula Fitness: Personal Training, Strength & Longevity design (separate version)
 
-Plain HTML, CSS and minimal JavaScript. No build step. Publish the `public/` folder.
+Plain HTML, CSS and a little JavaScript. No build step. **Deploy only the `public/` folder.** Preview version: `noindex` is on. Nothing has been published and no DNS was changed. The current Personal Training project was copied, not modified.
 
-## Files
-- `public/index.html`: all content, GTM slots, the one shared consultation modal
-- `public/style.css`: design (colours and font stack are variables at the top)
-- `public/script.js`: mobile menu, carousels, consultation modal (no tracking, no form logic)
-- `public/fonts/`: self-hosted Sora (variable, latin + latin-ext) and its OFL licence
-- `public/robots.txt`: allows crawling so crawlers can read the noindex tag
-- `public/images/`: supplied images, `logo.png`, `image-sources.csv`
+## Layout
+```
+public/                 deployable site: index.html, style.css, script.js, robots.txt, images/, fonts/
+source-images/          original photo masters (not deployed)
+docs/                   earlier briefs and baseline notes (not deployed)
+tools/build-images.py   rebuilds the web derivatives from the masters (needs Pillow)
+screenshots/            desktop, tablet and mobile screenshots
+README.md  CHANGELOG.md  CONTENT-NEEDED.md  COPY-SUGGESTIONS.md  LAUNCH-CHECKLIST.md
+```
 
-## Consultation form (existing GHL form)
-- Five controls open the SAME modal: header "Book a Consultation", both "Learn More" buttons, the hero trainer/avatar "+" control (aria-label "Join Trainers: book a consultation") and "Book Your Full Consultation". Each has `data-open-form`.
-- Without JavaScript (or without `<dialog>` support) each of those is a normal link that opens the form URL in a new tab.
-- Form URL used everywhere: `https://api.formulafitness.co/widget/form/cCHvBgZHH4fkFVQY6907`. Form ID unchanged. Nothing recreates fields, validation, submission, redirects or conversion tracking.
-- `https://api.formulafitness.co/js/form_embed.js` is loaded once (one `<script async>` at the end of `index.html`).
-- If your GHL embed code has extra attributes (`data-form-name`, `data-height`), add them to `<iframe id="inline-cCHvBgZHH4fkFVQY6907">`.
+## What this version is
+A new visual design for the Personal Training page, following the supplied concept's hierarchy: dark photographic hero with the text beside the coaching photo and a subtle overlay, bright blue consultation button, compact benefit strip, white sections with light-blue accents, three benefit cards, alternating photo/coaching rows, a three-step consultation section, client proof, FAQ accordion, a closing consultation card and a compact footer. The first design's oversized staggered headline is replaced by a two-line headline (Build Strength. / For Life.). Sora, black, white and Formula blue are kept.
 
-### Blank-form diagnosis (what I could and could not establish)
-I could not reach `api.formulafitness.co` from my workspace (HTTP 403 from the sandbox proxy), so **the real GHL form was never loaded and the actual cause of the blank form is not confirmed.** What the code review found:
-1. `loading="lazy"` on an iframe inside a closed `<dialog>`: a lazy iframe in a hidden container is deferred until it becomes visible, and browsers differ in when they start it. Removed.
-2. Even without `loading="lazy"`, an iframe loaded while its container is `display:none` has zero width, so the GHL form can measure itself wrongly and `form_embed.js` can size it wrongly. The `src` is now set (once) from `data-src` when the modal first opens, so the form loads into a visible, full-width frame.
-3. The old CSS gave the iframe `height:100%` inside a flex/overflow container, which is easy to collapse. It now has an explicit height (920px, 1100px on phones) inside one scrolling modal body; `form_embed.js` may override the height inline.
-4. Causes I cannot rule out from here: the GHL form/domain settings refusing to be framed on the preview domain (`frame-ancestors`/allowed-domain rules), a form that is unpublished, or `form_embed.js` being blocked. **A deployment or custom domain on its own will not fix a blank form**; if the form is still blank in the modal, open the "Open it in a new tab" link: if that page is also blank, the problem is inside GHL, not this page.
+**Round 2 copy (approved by you):** hero headline and sentence, benefits heading and the second row's heading were changed as instructed; all other text is the earlier approved copy, reorganised not rewritten (see `CHANGELOG.md`). `COPY-SUGGESTIONS.md` holds older optional proposals, not applied. The page makes no promise of a longer life, reversed ageing, pain-free living, injury prevention or guaranteed results.
 
-### How loading works now
-- First open: iframe `src` is set once, a spinner/"Loading the form..." status shows.
-- A load event hides the spinner only. It does not mean the form rendered (a blocked or error page also fires `load`), so the page never says "loaded". A permanent footer link, "Form not showing? Open it in a new tab", is always visible in the modal.
-- After 15 s with no load event: a message explains the delay and a "Try loading again" button appears.
-- Close/reopen only hides the dialog. The iframe is not reloaded, so entered data is kept.
-- To load the form on page load instead, put the `src` straight on the iframe (not recommended; see item 2).
+## Photos
+Only the supplied real Formula Fitness photos, unretouched, as WebP derivatives (EXIF applied, metadata stripped, no upscaling; masters in `source-images/`). The concept's illustrative photos were not used. Hero: coach guiding a kettlebell squat. Row 1: coach watching a client hold two kettlebells. Row 2: coach guiding a dumbbell hinge. Closing: coach talking with a client over a tablet. No photo is repeated; the machine/dumbbell-curl photo is no longer used (master kept in `source-images/`). All use `object-fit: cover` with crop positions that keep the coach and client in view.
 
-### Keyboard and cross-origin limits
-- Native `<dialog>`: Escape closes it, focus is trapped inside, the page behind is inert, focus goes to the close button on open and returns to the button that opened it on close.
-- **Escape while keyboard focus is inside the embedded form does not close the modal.** The iframe is cross-origin, so its key events never reach this page (observed in testing with a cross-origin stand-in). Press Shift+Tab to reach the close button, or click it. The page cannot read or react to anything inside the form.
-- Because the form is cross-origin, this page cannot detect real form errors, validation state or successful submission, and does not try to.
-- Only one scroll area (the modal body) is intended. If GHL does not resize the iframe and a form is taller than 920/1100px, the iframe will scroll internally; raise the heights in `style.css` (`.modal-body iframe`).
+## Form and CTAs (unchanged integration)
+- Seven enquiry controls open the same shared modal: header button, hero button, both coaching-row buttons, the closing consultation card button, the mobile sticky button and the footer link. Each is an ordinary link to the form URL if JavaScript is unavailable.
+- Form `https://api.formulafitness.co/widget/form/cCHvBgZHH4fkFVQY6907` (ID unchanged), `form_embed.js` loaded once. `script.js` is byte-for-byte the previous version. The concept's simplified form was **not** recreated and no second form or form ID exists; the closing section is a consultation card that opens the existing modal.
+- Loading spinner, 15 s timeout with retry, and the permanent "Open it in a new tab" fallback link are unchanged. Escape does not close the modal while focus is inside the cross-origin form (Shift+Tab to the close button).
+- **Mobile sticky button:** fixed to the bottom on screens under 700 px, with page padding so it never covers content, and hidden while the modal is open (it uses the `lock` class the existing script already sets on `body`).
 
-## GTM
-Marked slots only; nothing is installed. Paste the existing GTM snippets at the two marked places (`<head>` and right after `<body>`). No container ID or other tracking has been invented.
-
-## Privacy policy
-No confirmed URL was supplied, so no link was added. A marked comment in the footer CONTACT list shows where to put it.
-
-## Fonts
-Sora (SIL Open Font License, `fonts/OFL-Sora.txt`), self-hosted, with `Avenir Next`, `Segoe UI`, system fonts as fallbacks. Sora's top weight is 800 (the old 850/900 values map to 800).
+## Tracking
+Only the two marked GTM placeholders exist. **No tracking, redirect or UTM code is in this project and no Google Ads conversion is installed or verified.** Merge this design into your live files (or send them to me) so the live tracking, redirect and attribution carry over; do not replace the live page with this one blindly.
 
 ## Preview locally
-`python3 -m http.server -d public 8000` then open http://localhost:8000. Do not rely on `file://`. The form modal needs internet access.
-
-## Publish on Cloudflare Pages
-1. Push this folder to GitHub/GitLab.
-2. Cloudflare dashboard > Workers & Pages > Create > Pages > Connect to Git.
-3. Framework preset: None. Build command: empty. Build output directory: `public`.
-
-## Going live
-The page ships with `<meta name="robots" content="noindex, nofollow">` (kept on). At launch: delete it, add `<link rel="canonical" href="https://FINAL-ADDRESS/">`, optionally add a `Sitemap:` line to `robots.txt`, and attach the domain.
+`python3 -m http.server -d public 8000`, then http://localhost:8000 (not `file://`). The form modal needs internet access.
 
 ## Testing record
-Method: headless Chromium (Playwright) against a local HTTP server, widths 375, 390, 768, 1024 and 1440, with the real supplied images.
-**The GHL form and `form_embed.js` were replaced by local stand-ins** (a plain HTML page with 8 fields and a do-nothing button, and an empty script) served on the real URLs, because the real host was unreachable. No enquiry was submitted.
+Headless Chromium (Playwright), local server, widths 375, 390, 768, 1024 and 1440. **The real GHL form and `form_embed.js` were replaced by stand-ins (the sandbox cannot reach that host). No enquiry was submitted.**
 
-Passed at all five widths (200 checks, plus one timeout run):
-- All five enquiry controls open the shared modal by keyboard (Enter), page URL/hash unchanged; Escape (focus outside the iframe) closes it; focus returns to the opener; close button closes it.
-- Form URL requested once across repeated opens and reopens; one `form_embed.js` tag; iframe `src` exact; text typed into the stand-in form survived close/reopen.
-- Modal body scrolls so the stand-in's last field and button are reachable (including on a 375px full-screen modal); fallback link always visible.
-- Loading timeout: with a form request that never answers, the status message and "Try loading again" button appeared at 15 s and retry re-requested the form.
-- Mobile menu opens and closes (375/390/768); desktop nav visible at 1024/1440.
-- Both carousels: first cards are Personal Training / Semi Private Training / Recovery Service and Tony / Amber / Jason; 3 complete cards at 1024 and 1440, 2 at 768, 1 (with the next card peeking) at 375/390; Previous is disabled at the start, Next is disabled at the end with the last card complete; arrow keys move the track. All six services and ten coaches remain.
-- No horizontal overflow; hero headline is four lines with no clipping or overlap; Sora loaded; no broken images; no console or page errors; no failed requests (other than the stubbed hosts); tel/mailto/social links present; social icons are SVG with the original aria-labels; copyright is centred.
+### Performed: 398 automated checks passed (79-80 per width) after round 3
+- All seven enquiry controls open the shared modal from the keyboard; Escape closes it and focus returns to the opener; the page URL does not change; the form is requested once; one embed tag, one iframe, one form ID; typed data survives close/reopen; the modal body scrolls to the stand-in form's last field (full-screen at phone widths); fallback link always visible.
+- Mobile: sticky button pinned to the bottom, opens the modal, is hidden while it is open and returns after; it does not cover the last footer line at page end; tap targets (buttons, menu, FAQ rows) at least 44 px; mobile menu opens and closes.
+- Desktop: navigation visible; all nav anchors resolve.
+- Text: headline is two spans on one line each at every width with no clipping; hero sentence, button and microcopy exact; benefit strip, three cards, row headings and checklist titles, three steps, testimonial (exact, mixed-format context, no photo, no placeholder text), five FAQ answers, closing card, address and map link.
+- FAQ: Enter opens, Space closes, Tab moves with a visible focus ring. Team carousel: ten coaches, boundaries and last card complete.
+- Round 3: both coaching sections' bodies and supporting points exact, three steps and the enquiry-not-appointment note exact, five FAQ answers exact (address is a map link), closing body exact, and a scan that no duration, price, response time, free/no-obligation or lifespan/medical claims appear.
+- Round 2: new hero headline/sentence, benefits heading and row-2 heading exact; row 1 = kettlebell photo, closing = tablet photo, all photos different; section padding reduced and measured (see CHANGELOG).
+- Photos: loaded, `object-fit: cover`, none used twice; crops reviewed by eye in `screenshots/` at all five widths.
+- Contrast: all body text at least 4.5:1; large blue headings and the button at least 3:1.
+- Scans of the HTML and visible text found none of: free, assessment, injury, guarantee, discount, pain-free, reverse/longer-life wording, "longevity", before-and-after, old address, or earlier-service terms. No horizontal overflow, console errors or failed requests.
 
-Not tested / not verified:
-- **The real GHL form**: whether it renders, its fields, validation, submission and conversion firing, and its real height.
-- Escape-inside-iframe was observed with a cross-origin stand-in only.
-- Real phones and Safari/iOS/Firefox (only Chromium was run); screen readers; touch swiping was not driven by real touch gestures.
-- Pixel comparison with the reference: the reference site was not reachable from my workspace, so hero crop, badge sizes/rotation, CTA proportions and first-visit panels are my best match from the previous version and your description, not measured against the live reference. Please compare at your target viewport sizes.
-- Yelp and the other social icons are simple self-drawn marks (the Yelp mark in particular is a stylised approximation); replace with official brand artwork if required.
-- No Lighthouse/performance or `file://` run.
-
-## Flagged for review (reference wording kept as-is; not verified)
-Claims copied from the reference that need business confirmation before launch:
-1. "20+ Years of Experience" (hero) and "Certified coaches with 20+ years of combined experience" (benefit 5): two different statements.
-2. "10 SPECIALIZED TRAINERS": the team carousel lists 10 people; confirm the count and the word "specialized".
-3. "LIVE PAIN FREE" and "reduce pain" (Recovery Service): outcome/health claims.
-4. "This is included with your training, not an extra fee" (nutrition): included-service claim.
-5. "We are now accepting a limited number of new clients": scarcity claim.
-6. "No pressure, no sales pitch", "never plateau", "real time" tracking: promises.
-7. "Under 60 seconds" and "15+ data points/metrics" (InBody scan).
-8. "at a lower price point" (Semi Private), "Active Aging ... adults 55+", "Youth Training".
-9. "Full Consultation" label: confirm the consultation is not described as free anywhere (the page does not say free).
-10. Job titles for all 10 coaches are copied from the reference.
-11. **Studio address** "10831 Los Alamitos Blvd, Los Alamitos CA 90720" (footer text and map link): earlier Formula Fitness materials show a different address. Confirm before launch.
-12. Image-to-name mapping of the ten coach photos was inferred from the supplied file order; confirm each photo matches its name and title.
-No new offers, results, testimonials or guarantees were added.
-Not reproduced exactly: the reference's alt text (written to describe the photos), icon artwork, animations.
+### Not tested
+- **Real GHL form inspection:** the host is not reachable from my workspace, so required fields (including any date of birth or intake fields) are **unverified**; see `CONTENT-NEEDED.md`.
+- **The real GHL form**: rendering, validation, submission, thank-you redirect, Ads conversion, UTM attribution, and whether GHL allows framing on the final domain.
+- Safari/iOS, Firefox, real phones (including the on-screen keyboard with the sticky button), screen readers, real touch swiping, performance scoring.
+- The loading-timeout behaviour was not re-run (`script.js` is unchanged and it passed earlier).
