@@ -252,3 +252,12 @@ h2{text-wrap:balance}
 .res-cta{margin:1.25rem 0 0;text-align:center}
 @media(max-width:899px){.rcard{max-width:30rem;margin-inline:auto;width:100%}}
 @media(min-width:900px){.rgrid{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+
+/* Hero: supplied AI images. Portrait on phones, landscape from 700 px. Dark negative space on the left carries the text. */
+.hero-main>picture{display:contents}
+.hero-photo{aspect-ratio:4/5;object-fit:cover;object-position:50% 90%}
+@media(min-width:700px){.hero-photo{aspect-ratio:16/9;object-position:50% 50%}}
+@media(min-width:900px){
+ .hero-main::before{background:linear-gradient(90deg,#000 0,rgba(0,0,0,.85) 18%,rgba(0,0,0,.35) 38%,rgba(0,0,0,0) 54%)}
+ .hero-photo{position:absolute;right:0;top:0;height:100%;width:auto;max-width:100%;aspect-ratio:1672/941;margin:0;border-radius:0;object-position:100% 50%}
+}
