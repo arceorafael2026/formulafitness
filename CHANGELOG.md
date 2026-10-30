@@ -1,5 +1,21 @@
 # Changelog: Strength & Longevity design
 
+## Round 7: AI hero integrated, results reselected (draft)
+**Changed files**
+- `public/index.html`: hero `<img>` replaced by a `<picture>` (portrait source under 700 px, landscape otherwise), new alt text; Amber and CJ team cards removed (eight coaches remain, same order, names, titles and photos).
+- `public/style.css`: hero framing only (portrait 4:5 card on phones, 16:9 card on tablets, landscape image anchored right at full height from 900 px, lighter left overlay). Nothing else.
+- New images: `public/images/hero-ai-landscape-640/960/1280/1672.webp`, `hero-ai-portrait-480/720/960/1024.webp`.
+- Replaced images: `public/images/client-result-01.webp`, `client-result-02.webp`, `client-result-03.webp` now show the approved selections (`22389831`, `7764d0a5`, `76d5fb68`), all six faces blurred inside the files (strong Gaussian blur in elliptical masks; everything else, including bodies, backgrounds and BEFORE/AFTER labels, untouched; 1080x1080, shown whole with `object-fit: contain`). These have no srcset or picture variants.
+- Deleted: `public/images/pt-coach-guided-deadlift-*.webp` (old hero), `trainer-amber.webp`, `trainer-cj.webp`.
+- Tools/docs: `tools/build-hero.py`, `tools/blur-faces.py`, `source-images/hero-ai/` (AI masters), `README.md`, `CHANGELOG.md`, `LAUNCH-CHECKLIST.md`. Removed from the project (kept private): all unblurred results originals and the old hero master.
+- **Unchanged:** section order, layout, colours, typography, copy, results heading/intro/disclaimer/button, all other photos, GHL form URL/ID/embed/modal and CTA wiring, one GTM-K28JZ7N loader, favicons, `script.js`, `noindex`. No tracking or conversion actions added; clicks and modal opens are not lead events.
+
+## Round 5: GTM and favicon
+- **GTM:** replaced the empty placeholder comments with Google's standard GTM-K28JZ7N script (first in `<head>`, right after `<meta charset>`) and the standard `<noscript>` iframe immediately after `<body>`. One loader only; no duplicate GTM, gtag, Analytics or Ads loaders exist in the project.
+- **Favicon:** new `favicon.ico`, 16 and 32 px PNGs and a 180 px Apple touch icon from the logo mark (white mark on black), linked in `<head>` with `?v=20261030`. `/favicon.ico` now serves this icon, replacing whatever default a platform serves.
+- **Not changed:** design, copy, images, forms, GHL modal and consultation flow, `script.js`, `noindex`.
+
+
 ## Round 4: client results added early, old testimonial removed
 - **New section `#results`** between the three benefit cards (`#program`) and "Your Goals. Your Plan. Your Coach." (`#features`): heading "Real People. Real Results.", the supplied supporting sentence, three before-and-after composites, the line "Individual results vary. Training history, consistency and other factors influence outcomes.", and a "Book a Consultation" button that opens the existing shared GHL modal (`data-open-form`).
 - **Images:** `client-result-01/02/03.webp` (1080x1080, from supplied files `05fbcf7b-image.png`, `22389831-image.png`, `76d5fb68-image.png`). Whole composite kept, with both panels and BEFORE/AFTER labels; `object-fit: contain`; no crop, stretch, reorder or retouching. Masters are in `source-images/results-masters/` (outside `public/`).

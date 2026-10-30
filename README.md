@@ -2,6 +2,11 @@
 
 Plain HTML, CSS and a little JavaScript. No build step. **Deploy only the `public/` folder.** Preview version: `noindex` is on. Nothing has been published and no DNS was changed. The current Personal Training project was copied, not modified.
 
+## Latest changes (Tony's feedback, rounds 6-7)
+- **Hero:** the supplied AI-generated images are integrated: portrait for phones (under 700 px), landscape for tablets and desktop, as WebP (`hero-ai-portrait-*`, `hero-ai-landscape-*`, built by `tools/build-hero.py`; masters in `source-images/hero-ai/`, not deployed). The dark left of the landscape image carries the existing headline, text and button; both people and the kettlebell stay in frame at every width. The alt text marks the image as illustrative AI-generated; it is separate from the real results and is not presented as a client.
+- **Results:** three authentic composites with faces blurred inside the image files in both panels (`client-result-01/02/03.webp`, built by `tools/blur-faces.py`). Selected from the supplied files `22389831-image.png`, `7764d0a5-image.png`, `76d5fb68-image.png`. No names, timelines, numbers or training-format claims; the disclaimer is unchanged. Unblurred originals are not in this project or in `public/` (keep them private). Identity, permission and training format are **unresolved** (see `LAUNCH-CHECKLIST.md`).
+- **Team:** Amber and CJ removed (cards and image files); eight coaches remain; carousel unchanged in code.
+
 ## Layout
 ```
 public/                 deployable site: index.html, style.css, script.js, robots.txt, images/, fonts/
@@ -27,7 +32,10 @@ Only the supplied real Formula Fitness photos, unretouched, as WebP derivatives 
 - **Mobile sticky button:** fixed to the bottom on screens under 700 px, with page padding so it never covers content, and hidden while the modal is open (it uses the `lock` class the existing script already sets on `body`).
 
 ## Tracking
-Only the two marked GTM placeholders exist. **No tracking, redirect or UTM code is in this project and no Google Ads conversion is installed or verified.** Merge this design into your live files (or send them to me) so the live tracking, redirect and attribution carry over; do not replace the live page with this one blindly.
+Google Tag Manager container **GTM-K28JZ7N** is installed with Google's standard snippets: the script is the first thing in `<head>` after `<meta charset>`, and the `<noscript>` iframe is the first element after `<body>`. There is exactly one loader. No other tracking code (gtag, Analytics, Ads) is in this project, so nothing else needed preserving here; if the live site has other tracking that is not in these files, keep it when you deploy. **Nothing here tests or proves conversion tracking.** No form submission was made, so GHL delivery, the thank-you redirect, Ads conversion and UTM attribution remain unverified (they were reported working on the previous live version).
+
+## Favicon
+Built from the existing logo mark by `tools/build-favicons.py`: white diamond mark on a black tile (only the mark, since the wordmark is unreadable at small sizes). Files in `public/`: `favicon.ico` (16/32/48), `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png` (180, opaque), plus `icon-192.png` and `icon-512.png` (not linked; spare). The page links use `?v=20261030`; change that value whenever the icons change. The source logo is only 70x81 px, so the mark was smoothed and re-sharpened; supply a vector logo for an even crisper result.
 
 ## Preview locally
 `python3 -m http.server -d public 8000`, then http://localhost:8000 (not `file://`). The form modal needs internet access.
@@ -40,7 +48,7 @@ Headless Chromium (Playwright), local server, widths 375, 390, 768, 1024 and 144
 - Mobile: sticky button pinned to the bottom, opens the modal, is hidden while it is open and returns after; it does not cover the last footer line at page end; tap targets (buttons, menu, FAQ rows) at least 44 px; mobile menu opens and closes.
 - Desktop: navigation visible; all nav anchors resolve.
 - Text: headline is two spans on one line each at every width with no clipping; hero sentence, button and microcopy exact; benefit strip, three cards, row headings and checklist titles, three steps, testimonial (exact, mixed-format context, no photo, no placeholder text), five FAQ answers, closing card, address and map link.
-- FAQ: Enter opens, Space closes, Tab moves with a visible focus ring. Team carousel: ten coaches, boundaries and last card complete.
+- FAQ: Enter opens, Space closes, Tab moves with a visible focus ring. Team carousel: eight coaches (Amber and CJ removed in round 6), exact step count to each end, last card complete.
 - Round 3: both coaching sections' bodies and supporting points exact, three steps and the enquiry-not-appointment note exact, five FAQ answers exact (address is a map link), closing body exact, and a scan that no duration, price, response time, free/no-obligation or lifespan/medical claims appear.
 - Round 2: new hero headline/sentence, benefits heading and row-2 heading exact; row 1 = kettlebell photo, closing = tablet photo, all photos different; section padding reduced and measured (see CHANGELOG).
 - Photos: loaded, `object-fit: cover`, none used twice; crops reviewed by eye in `screenshots/` at all five widths.

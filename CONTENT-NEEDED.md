@@ -24,4 +24,4 @@ Nothing below has been invented. Where an answer is missing, the page defers to 
 - [ ] The form host is not reachable from my workspace, so **the required fields, field types and consent wording are unverified**. Please send a screenshot or export of the form builder (or the live form), and I will report the fields. General recommendation to consider later, with nothing changed now: keep the enquiry short (name, phone and/or email, main goal, consent). If date of birth or detailed intake questions are currently required, they could move to a later intake step after the consultation is arranged. This is a suggestion for you to decide in GHL, not something this project changes.
 
 ## Launch items
-- [ ] Privacy-policy URL (none supplied; no link added), real GTM snippets/container, live tracking and thank-you redirect (see LAUNCH-CHECKLIST.md).
+- [ ] Privacy-policy URL (none supplied; no link added), live tracking verification and thank-you redirect (see LAUNCH-CHECKLIST.md).
