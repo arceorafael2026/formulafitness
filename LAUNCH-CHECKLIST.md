@@ -3,6 +3,7 @@
 Nothing has been published. DNS, GitHub and Google Ads were not touched.
 
 ## Confirm before launch
+- [ ] **"Enter Info to Get Prices" wording:** confirm what actually happens after submission. The page says the team will contact the person to discuss pricing and next steps; if prices are shown or sent automatically, or the promise should differ, update the button and its supporting sentences. Also check the heading and button text **inside the GHL form** and the thank-you page, which this project cannot change.
 - [ ] **AI hero image (integrated, needs your sign-off):** the supplied AI images are on the page. Review both crops (portrait on phones, landscape elsewhere) on real devices. It is labelled as illustrative in the alt text and must not be presented as a real client or result; decide whether to add a visible AI disclosure. Check you are happy that the people shown are fictional.
 - [ ] **Face-blurred results:** check each blurred composite once more in the browser (six faces: before and after for three people). Keep the unblurred originals out of GitHub and `public/`.
 - [ ] **Inspect the real GHL form** (required fields, consent wording, mobile usability, thank-you redirect). It could not be inspected from my workspace, so this is **unverified**. See CONTENT-NEEDED.md.

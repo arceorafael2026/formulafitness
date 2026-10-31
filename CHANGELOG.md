@@ -1,5 +1,9 @@
 # Changelog: Strength & Longevity design
 
+## Round 8: CTA wording "Enter Info to Get Prices" (nothing else changed)
+- Every "Book a Consultation" button (header, hero, results, coaching sections, closing card, sticky mobile bar, mobile menu, modal heading, form iframe title) now reads **Enter Info to Get Prices**. Related sentences updated: meta description, hero note, step 01, two FAQ answers (beginners, what happens after I submit), the pricing FAQ, the closing paragraph and card ("We'll contact you to discuss pricing and your next steps"). Small-phone header button tightened so it stays on one line.
+- Unchanged: GHL form ID, URL, embed, fields, redirects, modal behaviour, images, GTM, favicons, coaches, results. Text inside the GHL form itself is not editable from this project.
+
 ## Round 7: AI hero integrated, results reselected (draft)
 **Changed files**
 - `public/index.html`: hero `<img>` replaced by a `<picture>` (portrait source under 700 px, landscape otherwise), new alt text; Amber and CJ team cards removed (eight coaches remain, same order, names, titles and photos).
