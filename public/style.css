@@ -261,3 +261,6 @@ h2{text-wrap:balance}
  .hero-main::before{background:linear-gradient(90deg,#000 0,rgba(0,0,0,.85) 18%,rgba(0,0,0,.35) 38%,rgba(0,0,0,0) 54%)}
  .hero-photo{position:absolute;right:0;top:0;height:100%;width:auto;max-width:100%;aspect-ratio:1672/941;margin:0;border-radius:0;object-position:100% 50%}
 }
+
+/* Longer CTA label ("Enter Info to Get Prices"): keep the header button on one line on small phones */
+@media(max-width:420px){.hdr .btn-sm{padding:.55rem .85rem;font-size:.8rem;white-space:nowrap}.bar-end{gap:.4rem}.menu-btn{padding-inline:.8rem}}
