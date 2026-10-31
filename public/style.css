@@ -278,3 +278,15 @@ h2{text-wrap:balance}
 }
 @media(max-width:699px){.cta-photo{object-position:50% 6%}}
 @media(min-width:700px) and (max-width:899px){.cta-photo{aspect-ratio:16/9;object-position:50% 6%}}
+
+/* Hero: supplied AI images. Portrait on phones, landscape from 700 px; dark negative space on the left carries the text from 1280 px. */
+.hero-main>picture{display:contents}
+.hero-photo{aspect-ratio:4/5;object-position:50% 90%}
+@media(min-width:700px){.hero-photo{aspect-ratio:16/9;object-position:50% 50%}}
+@media(min-width:1280px){
+ .hero-main::before{background:linear-gradient(90deg,#000 0,rgba(0,0,0,.85) 18%,rgba(0,0,0,.35) 38%,rgba(0,0,0,0) 54%)}
+ .hero-photo{position:absolute;right:0;top:0;height:100%;width:auto;max-width:100%;aspect-ratio:1672/941;margin:0;border-radius:0;object-position:100% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
+}
+
+/* Longer CTA label ("Enter Info to Get Prices"): keep the header button on one line on small phones */
+@media(max-width:420px){.hdr .btn-sm{padding:.55rem .85rem;font-size:.8rem;white-space:nowrap}.bar-end{gap:.4rem}.menu-btn{padding-inline:.8rem}}
