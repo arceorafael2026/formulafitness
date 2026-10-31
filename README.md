@@ -1,5 +1,7 @@
 # Formula Fitness: Semi-Private Personal Training, Strength & Longevity design (separate version)
 
+**Latest (image pack, Round 18):** new AI hero (portrait/landscape), AI-enhanced Build Strength photo, three new blurred results (different people from the Personal Training page), Amber and CJ removed. The enhanced knee-raise photo is held back (accidental changes found). See CHANGELOG.md, LAUNCH-CHECKLIST.md and docs/IMAGE-SOURCE-MAP.md. The hero and photo list below predates this round where it mentions the slam-ball hero.
+
 Plain HTML, CSS and a little JavaScript. No build step. **Deploy only the `public/` folder** (when approved). Preview version: `noindex` is on. Nothing has been published, no DNS, GitHub or Google Ads change was made.
 
 This is a **new, separate project** made from the latest Personal Training strength-and-longevity page. The Personal Training project (`formula-fitness-personal-training-strength-longevity`) and the earlier Semi-Private project (`formula-fitness-semi-private`) were not modified.
@@ -15,10 +17,13 @@ Four of the supplied genuine small-group coaching photos (1200 px square masters
 Alt texts describe only what is visible; no group size or "every rep" claim.
 
 ## Results section
-Three different individual BEFORE/AFTER composites from the supplied pack (`client-result-04/05/06.webp`, 1080x1080, shown whole with `object-fit: contain`; masters in `source-images/results-masters/`). They are **not** the three on the Personal Training page. They are presented as Formula Fitness community results: no names, timeframes, numbers or service attribution. Identity, permission and training-format checks are in `LAUNCH-CHECKLIST.md`. The Christopher C. testimonial is not restored.
+Three different individual BEFORE/AFTER composites from the supplied pack (`client-result-04/05/06.webp`, 1080x1080, shown whole with `object-fit: contain`; masters in `private folder (not in this project)`). They are **not** the three on the Personal Training page. They are presented as Formula Fitness community results: no names, timeframes, numbers or service attribution. Identity, permission and training-format checks are in `LAUNCH-CHECKLIST.md`. The Christopher C. testimonial is not restored.
 
 ## Form and CTAs (unchanged)
-Eight enquiry controls (header, hero, results, both coaching rows, closing card, mobile sticky button, footer link) open the same shared modal for GHL form `cCHvBgZHH4fkFVQY6907`; `form_embed.js` is loaded once; fallback link, loading state and timeout unchanged. Only the two marked GTM placeholders exist; no tracking IDs were invented and no Ads conversion is installed or verified.
+Eight enquiry controls (header, hero, results, both coaching rows, closing card, mobile sticky button, footer link) open the same shared modal for GHL form `cCHvBgZHH4fkFVQY6907`; `form_embed.js` is loaded once; fallback link, loading state and timeout unchanged. Google Tag Manager container **GTM-K28JZ7N** is installed with Google's standard snippets: script first in `<head>` after `<meta charset>`, `<noscript>` iframe first element after `<body>`, one loader, no placeholders. No other tracking, consent or attribution code exists in this project (nothing to preserve or duplicate), and no GA4/Ads tag or conversion was added. The consultation buttons and modal push nothing to the dataLayer, so button clicks and modal opens are not counted as leads. **Nothing here tests conversion tracking:** no form was submitted, so GHL delivery, the thank-you redirect, Ads conversion and UTM attribution are unverified.
+
+## Favicon
+Built from the existing logo mark by `tools/build-favicons.py` (white mark on a black tile; the wordmark is omitted as unreadable at small sizes): `favicon.ico` (16/32/48), `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png` (180, opaque), plus unlinked `icon-192.png`, `icon-512.png`. Linked with `?v=20261031`; change it whenever the icons change. The source logo is 70x81 px, so the mark was smoothed and re-sharpened; a vector logo would be crisper. No default platform favicon is referenced.
 
 ## Preview locally
 `python3 -m http.server -d public 8000`, then http://localhost:8000 (not `file://`).

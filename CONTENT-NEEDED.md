@@ -6,4 +6,4 @@
 - [ ] **Which coaches lead semi-private sessions** and that each title is current. Names, portraits and titles are unchanged; no qualifications were added.
 - [ ] **Larger photo masters (optional).** The four group photos are 1200 px; the hero shows them about 950 px wide on large screens.
 - [ ] **Real GHL form inspection** (required fields, consent wording, mobile use, thank-you redirect): not possible from my workspace.
-- [ ] **Privacy policy URL** and the **real GTM snippets**: none supplied, so none were added.
+- [ ] **Privacy policy URL**: none supplied, so none was added. (GTM-K28JZ7N is installed.)
