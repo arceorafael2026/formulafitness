@@ -1,0 +1,261 @@
+Create a separate Semi-Private Personal Training version from the
+attached latest Personal Training landing page.
+
+Keep its exact design, section order, colors, fonts, spacing,
+responsive behavior, results-section styling, coach carousel,
+FAQs and consultation modal. Change copy and suitable images only.
+
+Do not overwrite the Personal Training version.
+
+POSITIONING
+Individual training plans, delivered with coaching in a small group.
+Emphasize strength, long-term consistency and shared motivation.
+Do not describe it as identical workouts for everyone or promise
+exclusive one-on-one attention.
+
+HERO
+Label:
+SEMI-PRIVATE COACHING • LOS ALAMITOS, CA
+
+Headline:
+Your Plan.
+Stronger Together.
+
+Body:
+Semi-private personal training in Los Alamitos. Build strength with
+your own training plan, coach guidance and small-group support.
+
+CTA:
+Book a Consultation
+
+Microcopy:
+We’ll contact you to arrange your consultation.
+
+Benefit strip:
+Individual Training Plans
+Small-Group Coaching
+Los Alamitos, CA
+
+Use a supplied genuine small-group coaching photograph.
+Do not invent a group-size ratio.
+
+THREE BENEFIT CARDS
+Heading:
+Strength for Today. Support for the Long Term.
+
+Your Own Program
+Follow a training plan shaped around your goals, experience
+and starting point.
+
+Coaching That Guides You
+Get demonstrations, technique feedback and exercise adjustments
+during your small-group session.
+
+Shared Motivation
+Build consistency with encouragement from your coach and the
+people training alongside you.
+
+RESULTS SECTION
+Preserve the existing “Real People. Real Results.” layout,
+introductory text, disclaimer and consultation CTA.
+
+Do not assume the Personal Training version’s selected clients
+used semi-private training. Use only results explicitly confirmed
+for this service with permission.
+
+If no confirmed selection is supplied, retain the section in the
+draft with clearly labelled asset placeholders and document the
+missing approvals. Do not silently reuse unverified photos as
+semi-private outcomes or invent names, timeframes or numerical results.
+
+Keep complete BEFORE/AFTER panels visible with object-fit: contain.
+Do not crop comparison panels or alter bodies.
+Do not restore the removed Christopher C. testimonial panel.
+
+FIRST COACHING SECTION
+Heading:
+Your Goals. Your Plan.
+Small-Group Support.
+
+Body:
+Training together doesn’t mean following identical workouts.
+Semi-private coaching combines individual programming with a shared
+training environment, keeping your goals at the center.
+
+Points:
+Your Goals — Discuss what you want to achieve and what matters
+to you outside the gym.
+
+Your Starting Point — Work on exercises suited to your current
+ability and experience.
+
+Your Coach’s Guidance — Get demonstrations and feedback while
+training alongside others.
+
+Badge:
+YOUR OWN PROGRAM
+
+CTA:
+Book a Consultation
+
+SECOND COACHING SECTION
+Heading:
+Build Strength.
+Keep Showing Up.
+
+Body:
+Develop a routine with guidance from your coach and encouragement
+from the group. Review your progress and adapt your training as
+your strength and confidence grow.
+
+Points:
+Technique Feedback — Develop your understanding of exercises
+with coaching during your sessions.
+
+Progress Reviews — Discuss what is improving and what to work on next.
+
+Appropriate Adjustments — Adapt exercises and training demands
+to your developing ability.
+
+Shared Accountability — Bring structure to your routine with
+coaching and group support.
+
+Badge:
+COACHING & SUPPORT
+
+CTA:
+Book a Consultation
+
+Use suitable supplied group-coaching photos in both sections.
+Do not claim the coach watches every participant’s every rep.
+
+THREE-STEP SECTION
+Heading:
+YOUR NEXT STEP STARTS HERE
+
+01 — Send Your Enquiry
+Tell us about your goals. Our team will contact you to arrange
+a consultation.
+
+02 — Explore the Format
+Discuss your experience and learn how individual programming
+works within a small-group session.
+
+03 — Discuss Training Options
+Ask about suitable sessions, current availability and the next
+steps to get started.
+
+Below:
+Submitting the form is an enquiry, not a confirmed appointment.
+
+COACH CAROUSEL
+Heading:
+MEET YOUR SEMI-PRIVATE COACHING TEAM
+
+Preserve accurate names, portraits and titles.
+Flag current semi-private coaching roles for confirmation.
+Do not invent qualifications.
+
+FAQs
+Keep the existing five-question accordion design.
+
+Is semi-private training the same as a fitness class?
+Semi-private training combines individual programming with coaching
+in a small group. You follow a plan shaped around your goals rather
+than everyone completing the same workout.
+
+Can I enquire if I’m a beginner or returning after a break?
+Yes. Tell us about your experience and current routine so we can
+discuss whether semi-private training is a suitable option.
+
+How many people train together, and when are sessions?
+Contact us for current group capacity, session times and availability.
+We’ll help you explore options that fit your routine.
+
+What happens after I submit the form?
+Your form sends a consultation enquiry. The Formula Fitness team
+will contact you to arrange the next step and discuss training
+options and pricing. Submitting does not confirm an appointment.
+
+Where is Formula Fitness?
+3971 Ball Rd, Los Alamitos, CA 90720.
+Preserve the correct map link.
+
+CLOSING SECTION
+Heading:
+YOUR GOALS.
+SHARED MOTIVATION.
+
+Body:
+Explore semi-private personal training at Formula Fitness in
+Los Alamitos. Tell us about your goals and ask about current
+sessions, availability and training options.
+
+CTA:
+Book a Consultation
+
+Keep the current consultation-card design and enquiry microcopy.
+Use a suitable group-coaching photograph.
+
+FOOTER
+Description:
+Semi-private personal training in Los Alamitos, combining individual
+programming, coach guidance and small-group support.
+
+Column heading:
+SEMI-PRIVATE TRAINING
+
+Links:
+Your Training
+Your Individual Program
+Your First Visit
+Your Coaches
+Your Progress
+Book a Consultation
+
+Keep existing section IDs and working destinations.
+Preserve phone, email and social links.
+
+Confirmed address:
+3971 Ball Rd, Los Alamitos, CA 90720
+
+METADATA
+Title:
+Semi-Private Personal Training in Los Alamitos | Formula Fitness
+
+Description:
+Build strength with semi-private personal training in Los Alamitos.
+Your own program, coach guidance and small-group support.
+Book a consultation.
+
+Update alt text and accessible labels.
+Remove leftover one-on-one-only claims.
+Retain preview noindex; do not invent a canonical URL.
+
+PRESERVE FUNCTIONALITY
+Keep the existing GHL form URL and ID, single embed script,
+shared modal, loading states, fallback link and all enquiry CTAs.
+Do not change fields, submission logic or thank-you redirect.
+
+Preserve actual tracking code if present.
+Report GTM placeholders clearly; do not invent tracking IDs.
+
+No free offers, unconfirmed prices, scarcity, guaranteed outcomes,
+lifespan claims, group limits or session-duration promises.
+Do not publish, change DNS or modify GitHub.
+
+DELIVERY
+Return formula-fitness-semi-private-strength-longevity.zip
+with the complete public/ folder, images and fonts, plus:
+README.md
+CHANGELOG.md
+CONTENT-NEEDED.md
+LAUNCH-CHECKLIST.md
+
+Test at 375, 390, 768, 1024 and 1440px.
+Check headline wrapping, image crops, complete result panels,
+navigation, carousel, FAQs, enquiry CTAs and modal accessibility.
+Provide desktop/mobile screenshots where supported.
+
+State what was actually tested and what remains unverified.
+Do not submit a real enquiry.
