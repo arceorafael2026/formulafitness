@@ -297,3 +297,13 @@ h2{text-wrap:balance}
  .hero-photo.hs2{aspect-ratio:4/5;object-fit:cover;object-position:50% 18%}   /* Tony: face + upper body */
 }
 @media(min-width:900px){.hero-photo.hs2{width:50%;height:100%;max-height:none;aspect-ratio:auto;object-fit:contain;object-position:center}}
+
+/* Meet the team: 3 across x 2 rows (six coaches) on desktop, page 2 holds the rest; swipe carousel on phones */
+.team-sec .cpage{font-size:.85rem;color:#5b6070;align-self:center;margin-right:.25rem}
+@media(min-width:700px){
+ .track.team{display:flex;flex-wrap:wrap;justify-content:center;overflow:visible;scroll-snap-type:none;gap:1.5rem var(--gap);max-width:980px;margin-inline:auto}
+ .track.team>*{flex:0 0 calc((100% - var(--gap))/2)}
+ .track.team>[hidden]{display:none}
+}
+@media(min-width:960px){.track.team>*{flex:0 0 calc((100% - 2*var(--gap))/3)}}
+@media(max-width:699px){.team-sec .cpage{display:none}}
