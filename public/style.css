@@ -264,3 +264,46 @@ h2{text-wrap:balance}
 
 /* Longer CTA label ("Enter Info to Get Prices"): keep the header button on one line on small phones */
 @media(max-width:420px){.hdr .btn-sm{padding:.55rem .85rem;font-size:.8rem;white-space:nowrap}.bar-end{gap:.4rem}.menu-btn{padding-inline:.8rem}}
+
+/* Keep all header actions visible on narrow phones. */
+.booking-short { display: none; }
+@media (max-width: 540px) {
+  .hdr .bar { width: calc(100% - 24px); gap: 6px; }
+  .hdr .logo { flex-shrink: 0; }
+  .hdr .bar-end { min-width: 0; gap: 6px; }
+  .hdr .mock-phone { font-size: .75rem; }
+  .hdr .header-booking, .hdr .menu-btn { padding-inline: .65rem; }
+  .hdr .booking-full { display: none; }
+  .hdr .booking-short { display: inline; }
+}
+
+/* 320 px phones: trim the header gaps so logo, phone, Book now and Menu fit without overflowing the bar. */
+@media (max-width: 340px) {
+  .hdr .bar { gap: 4px; }
+  .hdr .bar-end { gap: 4px; }
+  .hdr .mock-phone { font-size: .7rem; }
+  .hdr .header-booking, .hdr .menu-btn { padding-inline: .55rem; }
+}
+
+/* Hero slideshow: auto-advance, no slide tabs; small Pause/Play control. */
+.hero-ctl{margin:0 0 .9rem}
+.hero-ctl button{font:inherit;font-size:.78rem;line-height:1;min-height:44px;min-width:44px;padding:.5rem .85rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(0,0,0,.45);color:#fff;cursor:pointer}
+.hero-ctl button:hover{background:rgba(255,255,255,.14)}
+/* Phones/tablets (stacked layout): per-slide photo box, never stretched, capped so it fits above the sticky bar. */
+@media(max-width:899px){
+ .hero-photo{width:calc(100% - 2.5rem);margin:0 auto 1.5rem;height:auto;max-height:min(58svh,440px);background:#0b0b0d;object-fit:cover}
+ .hero-photo.hs0{aspect-ratio:3/2;object-position:50% 50%}            /* 2048x1365 photo: shown whole */
+ .hero-photo.hs1{aspect-ratio:3/2;object-fit:contain;object-position:50% 50%} /* never cropped; letterboxed if portrait */
+ .hero-photo.hs2{aspect-ratio:4/5;object-fit:cover;object-position:50% 18%}   /* Tony: face + upper body */
+}
+@media(min-width:900px){.hero-photo.hs2{width:50%;height:100%;max-height:none;aspect-ratio:auto;object-fit:contain;object-position:center}}
+
+/* Meet the team: 3 across x 2 rows (six coaches) on desktop, page 2 holds the rest; swipe carousel on phones */
+.team-sec .cpage{font-size:.85rem;color:#5b6070;align-self:center;margin-right:.25rem}
+@media(min-width:700px){
+ .track.team{display:flex;flex-wrap:wrap;justify-content:center;overflow:visible;scroll-snap-type:none;gap:1.5rem var(--gap);max-width:980px;margin-inline:auto}
+ .track.team>*{flex:0 0 calc((100% - var(--gap))/2)}
+ .track.team>[hidden]{display:none}
+}
+@media(min-width:960px){.track.team>*{flex:0 0 calc((100% - 2*var(--gap))/3)}}
+@media(max-width:699px){.team-sec .cpage{display:none}}
