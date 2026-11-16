@@ -44,3 +44,6 @@ Headless Chromium (Playwright), local server, widths 375, 390, 768, 1024, 1440. 
 - Safari/iOS, Firefox, real phones and on-screen keyboard, screen readers, real touch swiping, performance scoring.
 - Whether current coaches deliver semi-private sessions (titles are carried over unchanged).
 - Identity, permission and training format of the three people in the results composites (not verifiable from the files).
+
+
+> **Round 10 note:** the "Form and CTAs" notes above describe the earlier pricing-form modal, which has been removed. Booking CTAs now go to the embedded calendar (see CHANGELOG.md Round 10).

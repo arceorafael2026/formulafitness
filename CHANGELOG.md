@@ -1,5 +1,33 @@
 # Changelog: Semi-Private, Strength & Longevity design
 
+## GHL Website Number Pool (dev)
+- Added the two GoHighLevel number-pool scripts exactly as supplied in the guide (`number_pool.js` for pool WabWjpu7sYFXyYEdM1Lv, then `user_session.js`), once, immediately before `</head>`.
+- Visible number is now (714) 380-2562 with `tel:+17143802562` in the header, location section and footer (the old (562) 669-4030 is gone). The four pool numbers are not typed anywhere on the page; GHL swaps them in.
+- Not tested with a real call: call routing and GHL attribution (Settings > Phone Numbers > Number Pools). GTM, calendar and layouts unchanged.
+
+## Team section: six coaches in a 3 x 2 grid
+- Meet the Team now shows six coaches at once on desktop (3 across, 3 top and 3 bottom; 2 across on tablets) in this order: Tony, Christy, Dwayne, Chris, Jason, Michael. J.P. and Mikaela fit on page 2 of the slider (Previous / Next with a 1 / 2 counter). Phones keep the swipe carousel, now in the new order with all eight.
+- All images use `loading="eager"` (matches the change made on the live Personal Training page).
+
+## Round 11: members + map, phone, Elite banner framing
+- Added **What Members Say** (Google / Yelp links, new tab) and **Find Our Los Alamitos Studio** (address, phone, Get Directions, embedded map) before the footer. The preview's "Review counts shown as supplied for design review" note was left out.
+- Phone number (562) 669-4030 added to the header next to the booking button (all widths; fits at 320 px).
+- Elite Certified Trainers photo on desktop (1280 px and up): now shows the whole photo (`contain`, right-aligned, 62% width) with a lighter overlay, so heads and feet are no longer cut off. Tablet and phone framing unchanged.
+- Fix: after clicking Pause then Play, the hero slideshow now resumes (focus left on the Play button was holding it).
+
+## Round 10: reviews, 24 results, booking calendar, CTA (same as the Personal Training booking build)
+- Google and Yelp review links (4.9 / 38, 5.0 / 63; open in a new tab) now also on hero slide 1.
+- Order is now hero > Real People. Real Results. > Book Your Free 15-Minute Consultation Call (embedded GHL calendar) > rest of page. The old 3-result section and its button are replaced by the 24-comparison slider (4 visible, Previous / Next / Pause, 5 s autoplay, reduced motion respected, no CTA in the results section). Faces blurred in both panels; unblurred originals are not in this project.
+- All booking CTAs now read **Book a Consultation Call** (**Book now** on phones in the header) and go to the calendar (`data-booking-cta` = header, hero, coaching x2, closing, sticky, footer). "Enter Info to Get Prices" and the pricing-form modal are removed. Hero note, steps, FAQ answer and closing card reworded for a call.
+- `loading="lazy"` changed to `loading="eager"` on every image and the calendar iframe.
+- Removed `client-result-04/05/06` (the old Semi-Private results).
+
+## Round 9: hero auto-advance (same as the Personal Training build)
+- Slide 1 is the existing Semi-Private hero (AI image, headline, copy, "Enter Info to Get Prices" button, note), unchanged. Slides 2 (Elite Certified Trainers) and 3 (Meet Tony Tran) are copied from the Personal Training build, with the Google/Yelp rating links.
+- No slide tab buttons. Auto-advances every 5 s (slide 1 -> 2 -> 3 -> repeat); headline, copy and photo switch together. Small Pause/Play button; holds on hover, keyboard focus and hidden tab; stays on slide 1 with Play under reduced motion.
+- The button stays the same element on every slide, so the pricing form still opens from it. The hero note shows on slide 1 only.
+- Mobile photo areas are per slide and capped to fit above the sticky bar; Tony framed on face and upper body. Slide 2 photo is hotlinked from formulafitness.co.
+
 ## Version 5: new results from the supplied pool, CTA wording
 - **Results replaced** from the eight supplied originals. None of the three is on the Personal Training page. Pool images matching the PT results were excluded by pixel comparison: `76d5fb68` (woman, side view) and `7764d0a5` (dark-haired man, front view). The three now on the page: `ac287212-image.jpg` (man, front view, same wall and pose, clear change) as `client-result-04`; `8d46a509-image.jpg` (woman, front view, same wall) as `client-result-05`; `bfa4772a-image.png` (= `05fbcf7b`, woman, front view, same wall) as `client-result-06`. Faces are blurred in both panels, locally, with bodies, labels and whole comparisons unchanged. Originals stay outside the project. No names, timelines, numbers or format claims; disclaimer kept.
 - **Name labels not mapped:** the labels you gave (Chase, Miguel, Yaska, Daniel, Monica, Adriane, Alisha, Daisy) cannot be tied to files with certainty, and are not used anywhere on the page or in file names.
