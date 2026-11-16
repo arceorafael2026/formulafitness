@@ -290,3 +290,83 @@ h2{text-wrap:balance}
 
 /* Longer CTA label ("Enter Info to Get Prices"): keep the header button on one line on small phones */
 @media(max-width:420px){.hdr .btn-sm{padding:.55rem .85rem;font-size:.8rem;white-space:nowrap}.bar-end{gap:.4rem}.menu-btn{padding-inline:.8rem}}
+
+/* Hero slideshow: auto-advance, no slide tabs; small Pause/Play control. */
+.hero-ctl{margin:0 0 .9rem}
+.hero-ctl button{font:inherit;font-size:.78rem;line-height:1;min-height:44px;min-width:44px;padding:.5rem .85rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(0,0,0,.45);color:#fff;cursor:pointer}
+.hero-ctl button:hover{background:rgba(255,255,255,.14)}
+.hero-note[hidden]{display:none}
+#heroText .mock-hero-list{font-size:1rem;line-height:1.5;padding-left:1.2rem;margin:1rem 0 1.25rem;color:#e4e6ec;max-width:34rem}
+#heroText h1+.hero-sub,#heroText .mock-hero-list{margin-top:1rem}
+.mock-ratings{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 1.25rem}
+.mock-ratings a{border:1px solid #61738b;border-radius:9px;padding:8px 12px;text-decoration:none;color:inherit;font-size:.9rem}
+.mock-ratings strong{color:#ffc458}
+.mock-link{color:#fff}
+#heroText p:has(.mock-link){margin:0 0 1rem}
+/* Per-slide photo framing (stacked layout under 1280 px). Slide 1 keeps its existing AI-image framing. */
+@media(max-width:1279px){
+ .hero-photo{background:#0b0b0d}
+ .hero-photo.hs1{aspect-ratio:3/2;object-fit:contain;object-position:50% 50%}
+ .hero-photo.hs2{aspect-ratio:4/5;object-fit:cover;object-position:50% 18%}
+}
+@media(min-width:700px) and (max-width:1279px){.hero-photo.hs2{aspect-ratio:16/10}}
+@media(max-width:699px){.hero-photo.hs1,.hero-photo.hs2{max-height:min(58svh,440px)}}
+/* Desktop overlay layout */
+@media(min-width:1280px){
+ .hero-photo.hs1{width:62%;height:100%;max-width:none;aspect-ratio:auto;object-fit:contain;object-position:100% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%);mask-image:linear-gradient(90deg,transparent 0,#000 8%)}
+ .hero-main.s1::before{background:linear-gradient(90deg,#000 0,#000 36%,rgba(0,0,0,.5) 41%,rgba(0,0,0,0) 48%)}
+ .hero-main.s1 .hero-copy{text-shadow:0 1px 8px rgba(0,0,0,.7)}
+ .hero-photo.hs2{width:50%;height:100%;max-width:none;aspect-ratio:auto;object-fit:contain;object-position:center}
+}
+
+/* Booking calendar section (same as the Personal Training build) */
+.booking-section{text-align:center;background:#edf5ff;scroll-margin-top:0}
+.booking-kicker{font-size:.76rem;font-weight:700;letter-spacing:.1em;color:#1460ad}
+.booking-calendar{display:block;width:100%;height:860px;border:1px solid #d6e2f0;border-radius:16px;background:#fff;margin:24px auto 16px}
+@media(max-width:640px){.booking-calendar{height:960px}}
+
+/* Results slider: four visible at a time, Previous / Next / Pause, counter */
+.results-slider{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px auto}
+@media(max-width:760px){.results-slider{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.results-slider figure{margin:0}
+.results-slider [hidden]{display:none}
+.results-slider .rcard{max-width:none}
+.mock-controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;align-items:center;justify-content:center}
+.mock-controls button{font:inherit;font-size:13px;border:1px solid #8393aa;border-radius:20px;padding:6px 12px;min-height:44px;background:#162435;color:#fff;cursor:pointer}
+
+/* Header booking button: short label on phones */
+.booking-short{display:none}
+@media(max-width:540px){
+ .hdr .bar{width:calc(100% - 24px);gap:6px}
+ .hdr .logo{flex-shrink:0}
+ .hdr .bar-end{min-width:0;gap:6px}
+ .hdr .header-booking,.hdr .menu-btn{padding-inline:.65rem}
+ .hdr .booking-full{display:none}
+ .hdr .booking-short{display:inline}
+}
+@media(max-width:340px){.hdr .bar{gap:4px}.hdr .bar-end{gap:4px}.hdr .header-booking,.hdr .menu-btn{padding-inline:.55rem}}
+
+/* Header phone number (same as the Personal Training build) */
+.mock-phone{color:inherit;white-space:nowrap;font-size:.82rem}
+@media(max-width:540px){.hdr .mock-phone{font-size:.75rem}}
+@media(max-width:340px){.hdr .mock-phone{font-size:.7rem}}
+
+/* What Members Say + map */
+.mock-review,.mock-map{padding:56px 0;background:#f5f8fc;color:#101c2e}
+.mock-review h2,.mock-map h2{font-size:clamp(28px,4vw,42px);margin:0 0 10px}
+.mock-review .mock-ratings{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.mock-review .mock-ratings a{border:1px solid #61738b;border-radius:9px;padding:10px 14px;text-decoration:none;color:inherit}
+.mock-review .mock-ratings strong,.mock-review .mock-ratings a{color:#101c2e}
+.mock-map-grid{display:grid;grid-template-columns:1fr 1.4fr;align-items:center;gap:28px}
+.mock-map iframe{width:100%;min-height:310px;border:0;border-radius:14px}
+@media(max-width:760px){.mock-map-grid{grid-template-columns:1fr}}
+
+/* Meet the team: 3 across x 2 rows (six coaches) on desktop, page 2 holds the rest; swipe carousel on phones */
+.team-sec .cpage{font-size:.85rem;color:#5b6070;align-self:center;margin-right:.25rem}
+@media(min-width:700px){
+ .track.team{display:flex;flex-wrap:wrap;justify-content:center;overflow:visible;scroll-snap-type:none;gap:1.5rem var(--gap);max-width:980px;margin-inline:auto}
+ .track.team>*{flex:0 0 calc((100% - var(--gap))/2)}
+ .track.team>[hidden]{display:none}
+}
+@media(min-width:960px){.track.team>*{flex:0 0 calc((100% - 2*var(--gap))/3)}}
+@media(max-width:699px){.team-sec .cpage{display:none}}
