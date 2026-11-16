@@ -1,4 +1,27 @@
-# Changelog: Strength & Longevity design
+# Changelog
+
+## GHL Website Number Pool (dev)
+- Added the two GoHighLevel number-pool scripts exactly as supplied in the guide (`number_pool.js` for pool WabWjpu7sYFXyYEdM1Lv, then `user_session.js`), once, immediately before `</head>`.
+- Visible number is now (714) 380-2562 with `tel:+17143802562` in the header, location section and footer (the old (562) 669-4030 is gone). The four pool numbers are not typed anywhere on the page; GHL swaps them in.
+- Not tested with a real call: call routing and GHL attribution (Settings > Phone Numbers > Number Pools). GTM, calendar and layouts unchanged.
+
+## Team section: six coaches in a 3 x 2 grid
+- Meet the Team now shows six coaches at once on desktop (3 across, 3 top and 3 bottom; 2 across on tablets) in this order: Tony, Christy, Dwayne, Chris, Jason, Michael. J.P. and Mikaela fit on page 2 of the slider (Previous / Next with a 1 / 2 counter). Phones keep the swipe carousel, now in the new order with all eight.
+- All images use `loading="eager"` (matches the change made on the live Personal Training page).
+
+## Round 10: hero auto-advance
+- Removed the three labelled slide buttons (Personal Training / Certified Trainers / Meet Tony) on all widths. The hero now starts on Personal Training and advances every 5 s: Personal Training -> Certified Trainers -> Meet Tony -> repeat. Headline, copy and photo switch together; copy, booking button and ratings are unchanged.
+- Added a small Pause/Play button (44 px target, aria-label and aria-pressed, live region polite only when paused). Autoplay also holds while the hero is hovered or has keyboard focus, and the tab is hidden. With `prefers-reduced-motion` the hero stays on slide 1 and shows Play.
+- Mobile photo box (under 900 px) is per slide, never stretched, capped at min(58svh, 440px): slide 1 3:2 cover (the 3:2 photo is shown whole), slide 2 3:2 contain (never cropped), slide 3 Tony 4:5 cover at 50% 18% (face and upper body). Desktop framing is as before (Tony 50% width, contain).
+- Other slide images are preloaded. `hero-portrait` class replaced by `hs0/hs1/hs2`.
+## Round 9: PT Booking preview applied
+- Base: the supplied PT Booking Preview (hero slider, 24-comparison results slider, booking calendar section, ratings, map, mobile header) applied over the current Personal Training source.
+- Restored from the current source: GTM-K28JZ7N (head script + noscript, once), favicon links, `form_embed.js` helper.
+- Results images: 24 comparisons added as `public/images/results/result-01..24.webp`, faces blurred in both panels. Old `client-result-*` and hero-ai images removed from `public/`.
+- Booking CTAs: six `a[href="#book-consultation"]` buttons with `data-booking-cta` (header, hero, coaching, closing, sticky, footer), label **Book a Consultation Call** (**Book now** on phones). Pricing modal / form ID removed from the page.
+- Fixes found in QA: 6 px header overflow at 320 px (new `max-width:340px` block in `style.css`); booking anchor landed 166 px low because `scroll-margin-top` stacked with `scroll-padding-top` (now `0`).
+- New `tools/blur-booking-results.py`.
+- Everything below this entry is history from earlier versions of this project (CTA wording then was "Enter Info to Get Prices"; it no longer applies to this build).
 
 ## Round 8: CTA wording "Enter Info to Get Prices" (nothing else changed)
 - Every "Book a Consultation" button (header, hero, results, coaching sections, closing card, sticky mobile bar, mobile menu, modal heading, form iframe title) now reads **Enter Info to Get Prices**. Related sentences updated: meta description, hero note, step 01, two FAQ answers (beginners, what happens after I submit), the pricing FAQ, the closing paragraph and card ("We'll contact you to discuss pricing and your next steps"). Small-phone header button tightened so it stays on one line.
