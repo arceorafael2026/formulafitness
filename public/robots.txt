@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Preview phase: the page carries a noindex meta tag, so crawlers must be allowed to read it.
-# Add a Sitemap line here once the final address is chosen.
+Sitemap: https://brand.formulafitness.co/sitemap.xml
