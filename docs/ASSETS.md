@@ -2,7 +2,10 @@
 ## Used (real Formula Fitness photos, already optimized WebP)
 | File | Where | Note |
 |---|---|---|
-| images/hero-aa-{640..1920}.webp | Hero | Real coaching photo supplied by client (permission to confirm). |
+| media/jason-inbody-540p.mp4 | Hero video | Jason D. InBody explainer, 960x540 H.264, ~8 MB (re-encoded from the 1080p/60fps original, which you still hold). |
+| media/jason-poster.webp | Hero video poster | Frame at 2s (Jason's name lower-third is baked in). |
+| media/jason-inbody-captions.vtt | Captions | MACHINE-GENERATED (speech-to-text). Needs human proofreading. |
+| docs/jason-video-transcript.txt | Transcript | Same source; also shown on the page under the video. |
 | images/coach-client-tablet-discussion.webp | How the Coaching Works | From the existing pages. |
 | images/trainer-{tony,christy,dwayne,chris,jason,michael,jp,mikaela}.webp | Meet the Coaches | Current approved headshots. |
 | images/logo.png, favicons, fonts/ | Header/footer | Existing. |

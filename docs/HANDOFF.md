@@ -32,3 +32,12 @@ The public page contains no TODO text. Everything unfinished is listed here. Lau
 ## Checks
 Done (local, third parties stubbed): 320/393/768/1024/1440px – no horizontal scroll, no JS errors/404s, text ≥16px (except eyebrow labels and the copyright line), tap targets ≥40px, hero stacked below copy under 900px and uncropped, no repeated images, all images load, FAQ opens by keyboard, tracking events (below).
 **Could not complete:** the REAL GHL calendar loading (the build environment cannot reach api.formulafitness.co, so screenshots show a stand-in page inside the iframe; the iframe size, position, URL and parameters are real); real GHL calendar/redirect/booking (none supplied); GTM/Ads firing; number-pool swap and call routing, including whether the pool also swaps the tel link on button CTAs (tested only that the number is read from the link); real devices; video playback/captions; screen-reader pass.
+
+## Hero video (v9) - needs review
+- The video is an **InBody 580 scan explainer**, not Active Aging-specific. Whether the scan is part of Active Aging is unconfirmed (pending Tony), so the page does not mention InBody in its own copy and has no InBody section.
+- The video makes health claims (visceral fat linked to diabetes, stroke and heart disease; scan can show inflammation/fluid imbalance; comparison with DEXA). Have Tony confirm these are acceptable for a Google Ads page, or re-cut.
+- Captions/transcript are machine-generated; proofread before launch.
+- File is 540p ~8 MB for page speed; swap in a higher-quality encode if preferred. Decide whether to keep the YouTube video in Benefits as well.
+- Not verified: actual video playback (sandbox browser has no H.264 decoder; file is standard H.264/AAC), real calendar, GTM/Ads, number pool, real devices.
+
+- (v10) Results slider now uses the 24 shared community comparisons; permission and fit for Active Aging still to confirm.
