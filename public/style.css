@@ -489,3 +489,33 @@ body .copy{font-size:.875rem}
 .rev-layout .rr-ba{margin:0 auto;max-width:440px}
 @media(min-width:800px){.rev-layout{grid-template-columns:1fr 1fr;gap:2.5rem}}
 @media(min-width:900px){.hero-photo.hb{width:min(46vw,660px)}.hero-main.hb-main .hero-copy{max-width:min(36rem,calc(100% - min(46vw,660px) - 3rem))}.hero-rate a{padding:.5rem .7rem}.hero-rate{gap:.5rem}}
+
+/* Video hero */
+.hero-main.hv{display:block;padding:2.25rem 0 2.25rem}
+.hv .hv-grid{display:grid;gap:1.75rem;position:relative;z-index:2}
+@media(min-width:900px){.hv .hv-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:3rem;align-items:center}.hv .hero-copy{max-width:none}}
+.hv-vid{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hv-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.hv-play{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;background:transparent;cursor:pointer;display:grid;place-items:center}
+.hv-play[hidden]{display:none}
+.hv-play:focus-visible{outline:3px solid #fff;outline-offset:-6px}
+.transcript{margin-top:1rem;border:1px solid #2b3445;border-radius:14px;background:#0b0d12;color:#e6ebf5}
+.transcript summary{padding:.75rem 1rem;cursor:pointer;font-weight:700;min-height:48px}
+.transcript-body{padding:0 1rem 1rem;max-height:320px;overflow:auto}
+.transcript-body p{margin:.6rem 0 0;font-size:1rem;line-height:1.65;color:#d5dcea}
+.transcript summary:focus-visible{outline:3px solid #fff}
+@media(max-width:899px){.hv .hero-rate,.hv .hero-note{display:none}}
+
+/* Real People. Real Results. slider (same as Personal Training / Semi-Private) */
+.res-block{margin-top:3rem;text-align:center}
+.res-block .res-h{margin:0}
+.results-slider{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px auto}
+@media(max-width:760px){.results-slider{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.results-slider figure{margin:0}
+.results-slider [hidden]{display:none}
+@media(max-width:899px){.results-slider .rcard{max-width:none}}
+.mock-controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;align-items:center;justify-content:center}
+.mock-controls button{font:inherit;font-size:1rem;border:1px solid #8393aa;border-radius:22px;padding:6px 16px;min-height:44px;min-width:44px;background:#162435;color:#fff;cursor:pointer}
+.mock-controls button:hover{background:#21364f}
+.mock-controls span{font-size:1rem;color:var(--ink2)}
+.res-note{font-size:1rem}
