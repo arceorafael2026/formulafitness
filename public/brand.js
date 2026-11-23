@@ -45,10 +45,3 @@
 
 (function(){var v=document.getElementById('ffVideo');if(!v)return;var b=v.querySelector('.vid-play');if(!b)return;
 b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.getAttribute('data-yt')+'?autoplay=1&rel=0';f.title='Formula Fitness video';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;v.replaceChild(f,b);f.focus();});})();
-
-(function(){var box=document.getElementById('heroVideo');if(!box)return;var v=box.querySelector('video'),btn=box.querySelector('.hv-play');if(!v||!btn)return;
-v.controls=false;btn.hidden=false;
-btn.addEventListener('click',function(){btn.hidden=true;v.controls=true;v.play().catch(function(){});v.focus();});
-v.addEventListener('play',function(){btn.hidden=true;v.controls=true;});
-v.addEventListener('ended',function(){btn.hidden=false;v.controls=false;});
-})();

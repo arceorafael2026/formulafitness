@@ -33,6 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=20261030">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=20261030">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20261030">
+<link rel="preload" as="image" href="images/hero-aa-barbell-1200.webp" imagesrcset="images/hero-aa-barbell-640.webp 640w, images/hero-aa-barbell-960.webp 960w, images/hero-aa-barbell-1200.webp 1200w, images/hero-aa-barbell-1600.webp 1600w" imagesizes="(min-width:900px) 52vw, 92vw" fetchpriority="high">
 <link rel="preload" href="fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 <!-- Tracking settings: edit tracking.js (event names, confirmation parameter). -->
@@ -234,7 +235,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main id="main">
 
-<!-- 1. HERO: Jason D. (General Manager) video, click-to-play, captioned, with transcript. No autoplay. -->
+<!-- 1. HERO: coach and client photo (supplied by client; permission to confirm). -->
 <section class="hero" id="top">
  <div class="hero-main hv">
   <div class="wrap hv-grid">
@@ -247,15 +248,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="hero-note">Choose a time that suits you to talk with the studio.</p>
    </div>
    <div class="hv-media">
-    <div class="hv-vid" id="heroVideo">
-     <video preload="none" controls playsinline poster="media/jason-poster.webp" width="960" height="540" aria-label="Video: Jason D., General Manager at Formula Fitness, explains the InBody 580 scan">
-      <source src="media/jason-inbody-540p.mp4" type="video/mp4">
-      <track kind="captions" src="media/jason-inbody-captions.vtt" srclang="en" label="English" default>
-      Your browser cannot play this video.
-     </video>
-     <button type="button" class="hv-play" hidden aria-label="Play video: Jason D., General Manager, on the InBody 580 scan"><span class="vid-btn" aria-hidden="true">&#9654;</span></button>
+    <div class="hv-vid hv-img">
+     <img src="images/hero-aa-barbell-1200.webp" srcset="images/hero-aa-barbell-640.webp 640w, images/hero-aa-barbell-960.webp 960w, images/hero-aa-barbell-1200.webp 1200w, images/hero-aa-barbell-1600.webp 1600w" sizes="(min-width:900px) 52vw, 92vw" width="1600" height="1067" alt="A Formula Fitness coach guiding an older client through a barbell exercise" fetchpriority="high" loading="eager" decoding="async">
     </div>
-</div>
+   </div>
   </div>
  </div>
 </section>
