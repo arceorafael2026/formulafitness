@@ -1,96 +1,71 @@
-# Formula Fitness landing page (rebuilt from the join.formulafitness.co reference)
+# Formula Fitness: Personal Training, PT Booking version (review build)
 
-Plain HTML, CSS and minimal JavaScript. No build step. Publish the `public/` folder.
+Plain HTML, CSS and a little JavaScript. No build step. **Deploy only the `public/` folder.** Preview version: `noindex` is on. Nothing has been published, no DNS was changed, and no booking was submitted.
 
-## Files
-- `public/index.html`: all content, GTM slots, the one shared consultation modal
-- `public/style.css`: design (colours and font stack are variables at the top)
-- `public/script.js`: mobile menu, carousels, consultation modal (no tracking, no form logic)
-- `public/fonts/`: self-hosted Sora (variable, latin + latin-ext) and its OFL licence
-- `public/robots.txt`: allows crawling so crawlers can read the noindex tag
-- `public/images/`: supplied images, `logo.png`, `image-sources.csv`
+This is the supplied *PT Booking Preview* applied to the current Personal Training source. The preview's hero slides, photos, copy, mobile header, review links, map and section order are kept. The current project's production GTM, favicons and GHL embed helper were carried over.
 
-## Consultation form (existing GHL form)
-- Five controls open the SAME modal: header "Book a Consultation", both "Learn More" buttons, the hero trainer/avatar "+" control (aria-label "Join Trainers: book a consultation") and "Book Your Full Consultation". Each has `data-open-form`.
-- Without JavaScript (or without `<dialog>` support) each of those is a normal link that opens the form URL in a new tab.
-- Form URL used everywhere: `https://api.formulafitness.co/widget/form/cCHvBgZHH4fkFVQY6907`. Form ID unchanged. Nothing recreates fields, validation, submission, redirects or conversion tracking.
-- `https://api.formulafitness.co/js/form_embed.js` is loaded once (one `<script async>` at the end of `index.html`).
-- If your GHL embed code has extra attributes (`data-form-name`, `data-height`), add them to `<iframe id="inline-cCHvBgZHH4fkFVQY6907">`.
+## What the page does
+- **Hero slideshow** (3 slides, no tab buttons) auto-advances every 5 s with a small Pause/Play control; it swaps headline text and photo together and stays still under reduced motion. Slides 1-2 use the preview's formulafitness.co photos (hotlinked, see Open items); slide 3 uses `images/trainer-tony.webp`.
+- **Mobile header (320-393 px):** logo, phone number, **Book now**, Menu all visible (a small `max-width:340px` block trims gaps so nothing overflows at 320 px). Above 540 px the button reads **Book a Consultation Call**.
+- **Results, "Real People. Real Results."** sits above the calendar and has **no CTA**. 24 before/after comparisons (`public/images/results/result-01..24.webp`), four visible at a time on desktop (fewer on narrower screens), Previous / Next / Play-Pause, a counter, and five-second autoplay. Autoplay is off when the visitor prefers reduced motion.
+- **Booking section** `#book-consultation`: the 15-minute GHL calendar iframe (`https://api.formulafitness.co/widget/bookings/formula-fitness-initial-consultation-15-call`, the URL from the preview, unchanged). Every booking CTA (header, hero, coaching, closing, mobile sticky bar, footer) is an anchor to it and reads **Book a Consultation Call**.
+- Ratings links, map iframe, team carousel and footer as in the preview. External links open in a new tab (`target="_blank" rel="noopener"`).
+- The old pricing-form modal and form ID are gone from the page. `script.js` still contains the modal code but it is inert (no dialog exists).
 
-### Blank-form diagnosis (what I could and could not establish)
-I could not reach `api.formulafitness.co` from my workspace (HTTP 403 from the sandbox proxy), so **the real GHL form was never loaded and the actual cause of the blank form is not confirmed.** What the code review found:
-1. `loading="lazy"` on an iframe inside a closed `<dialog>`: a lazy iframe in a hidden container is deferred until it becomes visible, and browsers differ in when they start it. Removed.
-2. Even without `loading="lazy"`, an iframe loaded while its container is `display:none` has zero width, so the GHL form can measure itself wrongly and `form_embed.js` can size it wrongly. The `src` is now set (once) from `data-src` when the modal first opens, so the form loads into a visible, full-width frame.
-3. The old CSS gave the iframe `height:100%` inside a flex/overflow container, which is easy to collapse. It now has an explicit height (920px, 1100px on phones) inside one scrolling modal body; `form_embed.js` may override the height inline.
-4. Causes I cannot rule out from here: the GHL form/domain settings refusing to be framed on the preview domain (`frame-ancestors`/allowed-domain rules), a form that is unpublished, or `form_embed.js` being blocked. **A deployment or custom domain on its own will not fix a blank form**; if the form is still blank in the modal, open the "Open it in a new tab" link: if that page is also blank, the problem is inside GHL, not this page.
+## Faces
+All 24 comparisons were blurred inside the image files, both panels, with localized elliptical masks (`tools/blur-booking-results.py`; strong two-pass Gaussian blur, feathered edge). Bodies, backgrounds, framing and the BEFORE/AFTER labels are unchanged. Unblurred originals are **not** in this ZIP or `public/`; keep them private. Face boxes were found with OpenCV Haar cascades and checked by eye on contact sheets; a second reviewer should still look at every slide (48 faces plus one bystander).
 
-### How loading works now
-- First open: iframe `src` is set once, a spinner/"Loading the form..." status shows.
-- A load event hides the spinner only. It does not mean the form rendered (a blocked or error page also fires `load`), so the page never says "loaded". A permanent footer link, "Form not showing? Open it in a new tab", is always visible in the modal.
-- After 15 s with no load event: a message explains the delay and a "Try loading again" button appears.
-- Close/reopen only hides the dialog. The iframe is not reloaded, so entered data is kept.
-- To load the form on page load instead, put the `src` straight on the iframe (not recommended; see item 2).
+## Tracking (GTM-K28JZ7N)
+Installed once: script first in `<head>` after `<meta charset>`, `<noscript>` iframe first in `<body>`. The preview had GTM disabled; this build restores the production snippets. No other tracking code exists in the project. `form_embed.js` (GHL helper, async) is loaded once before `script.js`.
 
-### Keyboard and cross-origin limits
-- Native `<dialog>`: Escape closes it, focus is trapped inside, the page behind is inert, focus goes to the close button on open and returns to the button that opened it on close.
-- **Escape while keyboard focus is inside the embedded form does not close the modal.** The iframe is cross-origin, so its key events never reach this page (observed in testing with a cross-origin stand-in). Press Shift+Tab to reach the close button, or click it. The page cannot read or react to anything inside the form.
-- Because the form is cross-origin, this page cannot detect real form errors, validation state or successful submission, and does not try to.
-- Only one scroll area (the modal body) is intended. If GHL does not resize the iframe and a form is taller than 920/1100px, the iframe will scroll internally; raise the heights in `style.css` (`.modal-body iframe`).
+### GTM click triggers: what needs updating
+The previous pricing-form buttons were identified by `data-open-form`, an `href` to `https://api.formulafitness.co/widget/form/cCHvBgZHH4fkFVQY6907`, and the modal `dialog`. **None of those exist now.** Any GTM trigger (or Ads/GA event) that matches on `[data-open-form]`, that form URL, the dialog open, or the old "Enter Info to Get Prices" / "Book a Consultation" text will no longer fire. I cannot see the container, so I could not tell which triggers exist. Check the container for those selectors.
 
-## GTM
-Marked slots only; nothing is installed. Paste the existing GTM snippets at the two marked places (`<head>` and right after `<body>`). No container ID or other tracking has been invented.
+New hooks on the six booking buttons:
 
-## Privacy policy
-No confirmed URL was supplied, so no link was added. A marked comment in the footer CONTACT list shows where to put it.
+| Button | `data-booking-cta` |
+|---|---|
+| Header | `header` |
+| Hero | `hero` |
+| Coaching section | `coaching` |
+| Closing card | `closing` |
+| Mobile sticky bar | `sticky` |
+| Footer | `footer` |
 
-## Fonts
-Sora (SIL Open Font License, `fonts/OFL-Sora.txt`), self-hosted, with `Avenir Next`, `Segoe UI`, system fonts as fallbacks. Sora's top weight is 800 (the old 850/900 values map to 800).
+Suggested trigger: Click - All Elements / Just Links, condition *Click Element matches CSS selector* `a[data-booking-cta]` (or `a[href="#book-consultation"]`), and use *Click Element* attribute `data-booking-cta` as the label. No dataLayer events were added.
+
+**Booking clicks are not booking events.** These clicks only scroll to the calendar. A successful booking can only be recorded from GHL (confirmation redirect to a thank-you URL, or a postMessage from the calendar widget). Neither is configured or tested here. Keep any Ads "conversion" off the click trigger.
+
+## Layout
+```
+public/        deployable site: index.html, style.css, script.js, robots.txt, favicons, images/, fonts/
+tools/         blur-booking-results.py (results blur), older helper scripts
+docs/          earlier briefs and baseline notes (not deployed)
+screenshots/   desktop and mobile screenshots of this build (booking-*.png)
+README.md  CHANGELOG.md  LAUNCH-CHECKLIST.md
+```
+`source-images/` holds earlier photo masters (not deployed).
 
 ## Preview locally
-`python3 -m http.server -d public 8000` then open http://localhost:8000. Do not rely on `file://`. The form modal needs internet access.
-
-## Publish on Cloudflare Pages
-1. Push this folder to GitHub/GitLab.
-2. Cloudflare dashboard > Workers & Pages > Create > Pages > Connect to Git.
-3. Framework preset: None. Build command: empty. Build output directory: `public`.
-
-## Going live
-The page ships with `<meta name="robots" content="noindex, nofollow">` (kept on). At launch: delete it, add `<link rel="canonical" href="https://FINAL-ADDRESS/">`, optionally add a `Sitemap:` line to `robots.txt`, and attach the domain.
+`python3 -m http.server -d public 8000`, then http://localhost:8000 (not `file://`). The calendar, hero photos 1-2 and the map need internet access.
 
 ## Testing record
-Method: headless Chromium (Playwright) against a local HTTP server, widths 375, 390, 768, 1024 and 1440, with the real supplied images.
-**The GHL form and `form_embed.js` were replaced by local stand-ins** (a plain HTML page with 8 fields and a do-nothing button, and an empty script) served on the real URLs, because the real host was unreachable. No enquiry was submitted.
+Headless Chromium (Playwright), local server, widths 320, 360, 375, 390, 393, 768, 1024, 1440. GTM, the GHL calendar and `form_embed.js`, the formulafitness.co hero photos and the map were **replaced by stand-ins** (the sandbox cannot reach those hosts). **No booking was submitted.**
 
-Passed at all five widths (200 checks, plus one timeout run):
-- All five enquiry controls open the shared modal by keyboard (Enter), page URL/hash unchanged; Escape (focus outside the iframe) closes it; focus returns to the opener; close button closes it.
-- Form URL requested once across repeated opens and reopens; one `form_embed.js` tag; iframe `src` exact; text typed into the stand-in form survived close/reopen.
-- Modal body scrolls so the stand-in's last field and button are reachable (including on a 375px full-screen modal); fallback link always visible.
-- Loading timeout: with a form request that never answers, the status message and "Try loading again" button appeared at 15 s and retry re-requested the form.
-- Mobile menu opens and closes (375/390/768); desktop nav visible at 1024/1440.
-- Both carousels: first cards are Personal Training / Semi Private Training / Recovery Service and Tony / Amber / Jason; 3 complete cards at 1024 and 1440, 2 at 768, 1 (with the next card peeking) at 375/390; Previous is disabled at the start, Next is disabled at the end with the last card complete; arrow keys move the track. All six services and ten coaches remain.
-- No horizontal overflow; hero headline is four lines with no clipping or overlap; Sora loaded; no broken images; no console or page errors; no failed requests (other than the stubbed hosts); tel/mailto/social links present; social icons are SVG with the original aria-labels; copyright is centred.
+### Performed: 209 automated checks passed
+- Header: phone, Book now and Menu visible and not overflowing at 320-393 px; full label above 540 px.
+- Menu opens and closes; nav anchors resolve.
+- Hero: three slides switch text and image via the buttons.
+- Results: heading above the calendar, no CTA inside the results section, 24 cards, four visible on desktop, Previous/Next/Play-Pause behave, counter updates, five-second autoplay advances, autoplay does not run under reduced motion.
+- All 24 result images load at 1080x1080; no broken images on the page.
+- Booking CTAs: six anchors, all go to `#book-consultation`, correct label per width, landing position is at the section top under the sticky header.
+- Calendar iframe element present with the preview URL and expected heights.
+- External links carry `target="_blank"` and `rel="noopener"`; GTM id appears once (script + noscript), `form_embed.js` once.
+- No horizontal overflow; no console errors from the site's own code.
 
-Not tested / not verified:
-- **The real GHL form**: whether it renders, its fields, validation, submission and conversion firing, and its real height.
-- Escape-inside-iframe was observed with a cross-origin stand-in only.
-- Real phones and Safari/iOS/Firefox (only Chromium was run); screen readers; touch swiping was not driven by real touch gestures.
-- Pixel comparison with the reference: the reference site was not reachable from my workspace, so hero crop, badge sizes/rotation, CTA proportions and first-visit panels are my best match from the previous version and your description, not measured against the live reference. Please compare at your target viewport sizes.
-- Yelp and the other social icons are simple self-drawn marks (the Yelp mark in particular is a stylised approximation); replace with official brand artwork if required.
-- No Lighthouse/performance or `file://` run.
-
-## Flagged for review (reference wording kept as-is; not verified)
-Claims copied from the reference that need business confirmation before launch:
-1. "20+ Years of Experience" (hero) and "Certified coaches with 20+ years of combined experience" (benefit 5): two different statements.
-2. "10 SPECIALIZED TRAINERS": the team carousel lists 10 people; confirm the count and the word "specialized".
-3. "LIVE PAIN FREE" and "reduce pain" (Recovery Service): outcome/health claims.
-4. "This is included with your training, not an extra fee" (nutrition): included-service claim.
-5. "We are now accepting a limited number of new clients": scarcity claim.
-6. "No pressure, no sales pitch", "never plateau", "real time" tracking: promises.
-7. "Under 60 seconds" and "15+ data points/metrics" (InBody scan).
-8. "at a lower price point" (Semi Private), "Active Aging ... adults 55+", "Youth Training".
-9. "Full Consultation" label: confirm the consultation is not described as free anywhere (the page does not say free).
-10. Job titles for all 10 coaches are copied from the reference.
-11. **Studio address** "10831 Los Alamitos Blvd, Los Alamitos CA 90720" (footer text and map link): earlier Formula Fitness materials show a different address. Confirm before launch.
-12. Image-to-name mapping of the ten coach photos was inferred from the supplied file order; confirm each photo matches its name and title.
-No new offers, results, testimonials or guarantees were added.
-Not reproduced exactly: the reference's alt text (written to describe the photos), icon artwork, animations.
+### Not tested
+- **Calendar rendering on the real GHL host**, availability, booking, confirmation, and whether GHL allows framing on the final domain.
+- The hotlinked formulafitness.co hero photos and the real map.
+- Live GTM load (`gtm.js` 200, once), tags firing, and attribution forwarding by `form_embed.js`.
+- Any successful-booking event or Ads conversion.
+- Safari/iOS, Firefox, real phones, screen readers.

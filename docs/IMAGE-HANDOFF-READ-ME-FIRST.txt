@@ -1,0 +1,23 @@
+FORMULA FITNESS — IMAGE HANDOFF FOR CLAUDE
+Prepared 27 October 2026. All 24 source images retained. No exact duplicates.
+
+WHAT WAS FIXED
+Clear web-friendly filenames, coaching/results/reference folders, placement recommendations and source-name mapping. All individual images are byte-identical to originals: no AI retouching, body edits, cropping, resizing or compression performed.
+
+RECOMMENDED SELECTION
+Hero: pt-coach-guided-deadlift.jpg
+First-visit assessment: pt-coach-overhead-press.jpg
+Coaching feature / closing CTA: pt-coach-guided-movement.jpg
+The folder does not contain a clear seated consultation photo; keep the previously supplied consultation image if suitable. Existing coach portraits remain in the existing website assets; they are not included here.
+
+IMPORTANT FOR CLAUDE
+Preserve the existing section design. Use text and image replacements only. Do not imply that a photograph proves a client purchased one-on-one training. Multiple people may appear in coaching backgrounds.
+Keep complete BEFORE/AFTER comparison panels and labels visible; use object-fit:contain for result composites, not cover. Do not stretch, reverse panels, reshape bodies, invent names or add weight/timeframe claims.
+Use neutral client-result filenames until client identity and one-on-one program are confirmed. Names on the source page conflict: 15 Rachel/CJ, 16 Chase/Renata, 17 Anna/Thomas, 18 Erik/Michael, 19 Marissa/Daisy, 20 Miguel/Ruby, 21 Dharshun/Angela, 22 Yaska/Levik, 23 Heather/Lizzi. The timeline filename mentions Chase but is not verified. Results imagery is not a written testimonial. Do not attach unrelated review quotes.
+The three low-resolution assets are only 416x300. Prefer 1080x1080 comparison images for result placement.
+Large coaching originals are roughly 7–15 MB. Make appropriately sized WebP derivatives during website implementation; retain these masters. Do not deploy full-resolution JPG masters unchanged. No original was upscaled.
+
+CONFIRMED ADDRESS
+3971 Ball Rd, Los Alamitos, CA 90720.
+
+Use IMAGE-MAP.csv to trace every renamed image back to its original file.
