@@ -107,3 +107,11 @@
     });
   }
 })();
+
+/* steps tabs */
+(function(){var tabs=[].slice.call(document.querySelectorAll('.in-nav [role=tab]'));if(!tabs.length)return;
+ function sel(t,focus){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on});
+  if(focus)t.focus();var nav=t.parentNode;if(nav.scrollWidth>nav.clientWidth){nav.scrollTo({left:t.offsetLeft-nav.clientWidth/2+t.offsetWidth/2,behavior:'smooth'})}}
+ tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t)});
+  t.addEventListener('keydown',function(e){var k=e.key,n=null;if(k==='ArrowDown'||k==='ArrowRight')n=tabs[(i+1)%tabs.length];else if(k==='ArrowUp'||k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];if(n){e.preventDefault();sel(n,true)}})});
+})();
